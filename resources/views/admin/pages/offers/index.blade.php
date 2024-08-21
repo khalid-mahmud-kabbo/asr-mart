@@ -1,4 +1,4 @@
-@extends('admin.master', ['menu' => 'products', 'submenu' => 'index'])
+@extends('admin.master', ['menu' => 'products', 'submenu' => 'offers'])
 @section('title', isset($title) ? $title : '')
 @section('content')
 
@@ -27,9 +27,6 @@
         <div class="col-md-12">
             <div class="customers__area bg-style mb-30">
                 <div class="item-title">
-                    <div class="col-xs-6">
-                        <a href="{{route('admin.offers.create')}}" class="btn btn-md btn-info">{{ __('Add Product Offer Section')}}</a>
-                    </div>
                 </div>
                 <div class="customers__table">
                     <table id="OfferSectionTable" class="row-border data-table-filter table-style">

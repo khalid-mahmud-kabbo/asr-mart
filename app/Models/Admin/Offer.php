@@ -9,6 +9,13 @@ class Offer extends Model
     use HasFactory;
     protected $fillable = [
         'title',
+        'enddate'
     ];
+
+
+    public function Offers()
+    {
+        return $this->belongsToMany(Offer::class, 'title');
+    }
 }
 

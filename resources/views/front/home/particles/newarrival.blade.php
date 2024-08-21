@@ -4,11 +4,21 @@
 
 
 <div class="col-md-3 deal-of-the-day-wrapper">
+
                 @foreach ($products as $item)
-                @if($item->ItemTag == 'Deal Of The Day')
+                @if($item->ItemTag == 2)
 
                 <div class="deal-of-the-day p-4" style="width: 80%; height: 100%;">
-                    <h3 class="text-center text-black">DEAL OF THE DAY</h3>
+
+                    @php
+                    $secondOffer = $offers->skip(1)->first();
+                @endphp
+
+                @if($secondOffer)
+                    <h3 class="text-center text-black">{{ $secondOffer->title }}</h3>
+                @endif
+
+
                     <div class="deal-container bg-white rounded mt-4">
                         <div class="product-card p-3 text-center">
 

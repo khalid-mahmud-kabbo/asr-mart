@@ -1,4 +1,4 @@
-@extends('admin.master', ['menu' => 'products', 'submenu' => 'section'])
+@extends('admin.master', ['menu' => 'products', 'submenu' => 'update'])
 @section('title', isset($title) ? $title : '')
 @section('content')
     <div class="row">
@@ -36,10 +36,16 @@
 
                                             <input type="hidden" name="id" value="{{ $edit->id }}">
                                             <div class="input__group mb-25">
-                                                <label for="size">{{ __('Size') }}</label>
+                                                <label for="size">{{ __('Section Title') }}</label>
                                                 <input type="text" id="title" name="title" value="{{ $edit->title }}"
                                                     placeholder="{{ __('Section Title') }}">
                                             </div>
+@if($edit->id == 1)
+                                            <div class="input__group mb-25">
+                                                <label for="size">{{ __('End Date') }}</label>
+                                                <input type="date" id="enddate" name="enddate">
+                                            </div>
+@endif
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update') }}</button>
                                             </div>

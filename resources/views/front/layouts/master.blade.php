@@ -120,7 +120,7 @@
     @include('front.layouts.include.script')
     @stack('post_script')
     {{-- @include('sweetalert::alert') --}}
-
+    <script src="//code.tidio.co/ki0fibm76ct1inoslk519njsw7ri9owf.js" async></script>
 </body>
 
 </html>

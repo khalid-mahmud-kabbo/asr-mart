@@ -10,6 +10,7 @@ use App\Models\Admin\OrderDetails;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductTag;
 use App\Models\Admin\Size;
+use App\Models\Admin\Offer;
 use App\Models\ItemTag;
 use App\Models\ProductTagList;
 use Illuminate\Http\Request;
@@ -97,6 +98,7 @@ class ProductController extends Controller
         $data['product'] = Product::get();
         $data['category'] = Category::get();
         $data['tags'] = ProductTagList::get();
+        $data['offers'] = Offer::get();
         $data['item_tags'] = ItemTag::get();
         return view('admin.pages.product.create', $data);
     }
@@ -106,6 +108,7 @@ class ProductController extends Controller
         $data['product'] = Product::get();
         $data['category'] = Category::get();
         $data['tags'] = ProductTagList::get();
+        $data['offers'] = Offer::get();
         $data['item_tags'] = ItemTag::get();
         return view('admin.pages.product.physical', $data);
     }
@@ -251,8 +254,8 @@ class ProductController extends Controller
             // 'fr_ShippingReturn' => $data['fr_shippingreturn'],
             // 'fr_AdditionalInformation' => $data['fr_additionalinformation'],
             'Quantity' => $data['qty'] ?? 0,
-            'enddate' => $data['enddate'],
-            'salename' => $data['salename'],
+            // 'enddate' => $data['enddate'],
+            // 'salename' => $data['salename'],
             'ItemTag' => $data['item_teg'],
             'Primary_Image' => $data['primary_image'],
             'Image2' => $data['img_two'] ?? null,
@@ -487,6 +490,7 @@ class ProductController extends Controller
         $data['colors'] = Color::latest()->get();
         $data['sizes'] = Size::latest()->get();
         $data['tags'] = ProductTagList::get();
+        $data['offers'] = Offer::get();
         $data['item_tags'] = ItemTag::get();
         if ($product_type == 'physical') {
             return $this->physicalProductEditView($data);
@@ -540,32 +544,32 @@ class ProductController extends Controller
             'license_key',
             'affiliate_link',
         ]);
-        if (!empty($request->primary_image)) {
-            $data['primary_image'] = fileUpload($request['primary_image'], ProductImage());
-        } else {
-            $data['primary_image'] = $product->Primary_Image;
-        }
-        if (!empty($request->image_two)) {
-            $data['img_two'] = fileUpload($request['image_two'], ProductImage());
-        } else {
-            $data['img_two'] = $product->Image2;
-        }
+        // if (!empty($request->primary_image)) {
+        //     $data['primary_image'] = fileUpload($request['primary_image'], ProductImage());
+        // } else {
+        //     $data['primary_image'] = $product->Primary_Image;
+        // }
+        // if (!empty($request->image_two)) {
+        //     $data['img_two'] = fileUpload($request['image_two'], ProductImage());
+        // } else {
+        //     $data['img_two'] = $product->Image2;
+        // }
 
-        if (!empty($request->image_three)) {
-            $data['img_three'] = fileUpload($request['image_three'], ProductImage());
-        } else {
-            $data['img_three'] = $product->Image3;
-        }
-        if (!empty($request->image_four)) {
-            $data['img_four'] = fileUpload($request['image_four'], ProductImage());
-        } else {
-            $data['img_four'] = $product->Image4;
-        }
-        if (!empty($request->image_five)) {
-            $data['img_five'] = fileUpload($request['image_five'], ProductImage());
-        } else {
-            $data['img_five'] = $product->Image5;
-        }
+        // if (!empty($request->image_three)) {
+        //     $data['img_three'] = fileUpload($request['image_three'], ProductImage());
+        // } else {
+        //     $data['img_three'] = $product->Image3;
+        // }
+        // if (!empty($request->image_four)) {
+        //     $data['img_four'] = fileUpload($request['image_four'], ProductImage());
+        // } else {
+        //     $data['img_four'] = $product->Image4;
+        // }
+        // if (!empty($request->image_five)) {
+        //     $data['img_five'] = fileUpload($request['image_five'], ProductImage());
+        // } else {
+        //     $data['img_five'] = $product->Image5;
+        // }
 
         $data['status'] = checkBoxValue($request->status);
         $data['feature'] = checkBoxValue($request->feature);

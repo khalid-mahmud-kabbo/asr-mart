@@ -28,9 +28,23 @@
                         <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
                             <form enctype="multipart/form-data" method="POST" action="{{ route('admin.product.update') }}">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-vertical__item bg-style">
+
+
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">English</button>
+                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Bangla</button>
+                                </div>
+
+
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+
+
+                                <div class="row form-vertical__item bg-style">
+                                    <div class="col-md-12">
+                                        <div>
                                             <div class="item-top mb-30">
                                                 <h2>{{ langString('en', false) . ':' }}</h2>
                                             </div>
@@ -80,10 +94,10 @@
                                                 <select class="select2-multiple form-control tag_two" name="product_tag[]"
                                                     multiple="multiple">
                                                     <option value="">{{ __('---SELECT A PRODUCT TAG---') }}</option>
-                                                    @foreach ($tags as $tag)
-                                                        <option value="{{ $tag->name }}"
-                                                            {{ selectProductTag($tag->name, $product->id) }}>
-                                                            {{ $tag->name }}</option>
+                                                    @foreach ($offers as $tag)
+                                                        <option value="{{ $tag->title }}"
+                                                            {{ selectProductTag($tag->title, $product->id) }}>
+                                                            {{ $tag->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -274,6 +288,8 @@
                                     </div>
                                 </div>
                             </form>
+
+
                         </div>
                     </div>
 

@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\ServiceCustomerController;
 use App\Http\Controllers\Frontend\SubscribeSessionController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\SslCommerzPaymentController;
 
 
@@ -101,7 +102,6 @@ Route::group(['middleware' => ['is_user']], function () {
     });
 
 
-    Route::get('/load-more-products', 'ProductController@loadMoreProducts')->name('load.more.products');
 
 
     Route::group(['prefix' => 'cart'], function () {
@@ -126,12 +126,6 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('brand/{id}', [ProductController::class, 'BrandWiseProduct'])->name('brand.product');
         Route::get('brand/left/{id}', [ProductController::class, 'BrandWiseProductLeft'])->name('brand.product_left');
     });
-
-
-
-
-
-
 
 
 

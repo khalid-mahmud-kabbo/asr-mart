@@ -142,19 +142,6 @@
 
 
 
-                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3 d-none">
-                                                <label for="select2Multiple">{{ __('Product Tag') }}</label>
-                                                <select class="select2-multiple form-control tag_two" name="product_tag[]"
-                                                    multiple="multiple">
-                                                    <option value="">{{ __('---Select item---') }}</option>
-                                                    @foreach ($tags as $tag)
-                                                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('product_tag')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
 
 
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
@@ -232,22 +219,21 @@
                                             </div>
 
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                <label for="enddate">{{ __('Name of Sale (Optional)') }}</label>
-                                                <input type="text" placeholder="Name of Sale" class="form-control" id="salename"
-                                                    name="salename">
-                                                @error('salename')
+                                                <label for="exampleInputEmail1">{{ __('Product Offer Section') }}</label>
+                                                <select class="form-control" id="item_teg" name="item_teg">
+                                                    <option value="">{{ __('---Select item---') }}</option>
+                                                    @foreach ($offers as $it)
+                                                        <option value="{{ $it->id }}">{{ $it->title }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('item_teg')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
-                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                <label for="enddate">{{ __('Sale End Date (Optional)') }}</label>
-                                                <input type="date" class="form-control" id="enddate"
-                                                    name="enddate">
-                                                @error('enddate')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+
+
+
                                         </div>
 
 

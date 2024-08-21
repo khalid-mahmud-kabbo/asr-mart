@@ -16,6 +16,7 @@ use App\Models\Currency;
 use App\Models\Language;
 use App\Models\SeoSetting;
 use App\Models\Setting;
+use App\Models\Admin\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -31,6 +32,7 @@ class HomeController extends Controller
             }
             $data['sliders'] = Slider::latest()->get();
             $data['banner'] = Banner::first();
+            $data['offers'] = Offer::get();
             $data['promotion'] = Advertise::latest()->get();
             $data['blogs'] = Blog::with('tags')->latest()->get();
             $data['brands'] = Brand::latest()->get();
@@ -51,6 +53,7 @@ class HomeController extends Controller
             return redirect()->to('/install');
         }
     }
+
 
 
     public function theme_set(Request $request)

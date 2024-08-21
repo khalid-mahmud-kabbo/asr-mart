@@ -2,7 +2,16 @@
     <div class="brands">
         <div class="d-flex justify-content-between">
             <div>
-        <h2 class="text-black mb-4">Flash Sell</h2>
+
+                @php
+    $firstOffer = $offers->first(); // Get the first offer
+@endphp
+
+@if($firstOffer)
+    <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
+@endif
+
+
         <div class="countdown-background">
             <span class="cz-countdown d-flex justify-content-center align-items-center flash-deal-countdown" data-countdown="08/20/2024 23:59:00 ">
                 <span class="cz-countdown-days">
@@ -36,7 +45,7 @@
 
             @php
             $FlashSellingProducts = $products->filter(function ($item) {
-                return $item->On_Sale == 1;
+                return $item->ItemTag == 1;
             })->take(5);
         @endphp
 
