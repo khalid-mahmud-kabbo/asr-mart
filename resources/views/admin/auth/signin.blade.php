@@ -40,7 +40,7 @@
                             <div class="input__group mb-25">
                                 <label class="text-white">{{__('Email Address')}}</label>
                                 <div class="input-overlay">
-                                    <input type="text" name="email" id="email" value="{{ app()->environment('local') ? 'admin@gmail.com' : old('email') }}" placeholder="{{__('Enter email address')}}">
+                                    <input type="text" name="email" id="email" placeholder="{{__('Enter email address')}}">
                                     <div class="overlay">
                                         <img src="{{asset('admin/images/icons/mail.svg')}}" alt="icon">
                                     </div>
@@ -49,7 +49,7 @@
                             <div class="input__group mb-20">
                                 <label class="text-white">{{__('Password')}}</label>
                                 <div class="input-overlay">
-                                    <input type="password" name="password" id="pass" value="{{ app()->environment('local') ? '123456' : '' }}" placeholder="{{__('Enter password')}}">
+                                    <input type="password" name="password" id="pass" placeholder="{{__('Enter password')}}">
                                     <div class="overlay">
                                         <img src="{{asset('admin/images/icons/lock.svg')}}" alt="icon">
                                     </div>

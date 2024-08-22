@@ -37,6 +37,7 @@
                                                 <label for="url">{{ __('Url') }}</label>
                                                 <input type="text" class="form-control" id="url" name="url"
                                                     required="" value="{{ $specialOffer->url }}">
+
                                             </div>
 
                                             @if ($specialOffer->image)
@@ -44,6 +45,7 @@
                                                     <label for="exampleInputEmail1">{{ __('image') }}</label>
                                                     <input type="file" class="form-control putImage5" name="image"
                                                         id="image">
+                                                        <span>{{ '1632*352' }}</span>
                                                     <img class="admin_image"
                                                         src="{{ asset(offerImage() . $specialOffer->image) }}"
                                                         id="target5" />

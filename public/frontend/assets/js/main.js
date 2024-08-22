@@ -938,3 +938,8 @@ $('.slide-image')
         document.getElementById("hidemessage").addEventListener("click", function() {
             document.getElementById("message").classList.add("remove");
         });
+
+
+
+
+      

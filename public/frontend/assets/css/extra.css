@@ -1816,3 +1816,34 @@ a.product-link {
     font-size: 13px;
 }
 
+.product-single-area .product-single-details .product-info .note-text {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: 400;
+    color: #777777;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    height: 80px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.date-counter{
+width: 20.666667% !important;
+}
+
+.offer-image-home {
+    height: 100px;
+}
+
+.offer-image-home img{
+    height: 100%;
+}
+
+
+.progress-bar {
+    background-color: #5A4091 !important;
+}

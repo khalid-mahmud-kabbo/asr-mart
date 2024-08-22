@@ -1,52 +1,103 @@
 <div class="brands-wrapper">
     <div class="brands">
-        <div class="d-flex justify-content-between">
-            <div>
+
+        <div class="row mt-4">
+
+
+            <div class="col-lg-2 col-md-4 col-sm-6 date-counter">
 
                 @php
-    $firstOffer = $offers->first(); // Get the first offer
-@endphp
+                $firstOffer = $offers->first();
+            @endphp
 
-@if($firstOffer)
-    <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
-@endif
+            @if($firstOffer)
+                <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
+                <div class="offer-image-home mb-4">
+                    <img src="{{ asset('storage/' . $firstOffer->offerbanner) }}" class="rounded" alt="{{ $firstOffer->title }}">
+                </div>
+                <div class="countdown-background">
+                    <span id="cz-countdown" class="cz-countdown d-flex justify-content-center align-items-center flash-deal-countdown">
+                        <span class="cz-countdown-days">
+                            <span id="days" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Days</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-hours">
+                            <span id="hours" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Hrs</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-minutes">
+                            <span id="minutes" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Min</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-seconds">
+                            <span id="seconds" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Sec</span>
+                        </span>
+                    </span>
+                    <div class="progress __progress mt-4">
+                        <div id="flash-deal-progress-bar" class="progress-bar flash-deal-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
 
 
-        <div class="countdown-background">
-            <span class="cz-countdown d-flex justify-content-center align-items-center flash-deal-countdown" data-countdown="08/20/2024 23:59:00 ">
-                <span class="cz-countdown-days">
-                    <span class="cz-countdown-value">4</span>
-                    <span class="cz-countdown-text">Days</span>
-                </span>
-                <span class="cz-countdown-value p-1">:</span>
-                <span class="cz-countdown-hours">
-                    <span class="cz-countdown-value">23</span>
-                    <span class="cz-countdown-text">Hrs</span>
-                </span>
-                <span class="cz-countdown-value p-1">:</span>
-                <span class="cz-countdown-minutes">
-                    <span class="cz-countdown-value">33</span>
-                    <span class="cz-countdown-text">Min</span>
-                </span>
-                <span class="cz-countdown-value p-1">:</span>
-                <span class="cz-countdown-seconds">
-                    <span class="cz-countdown-value">55</span>
-                    <span class="cz-countdown-text">Sec</span>
-                </span>
-            </span>
-        </div>
+
+                <script>
+                    // Set the end date from PHP to JavaScript
+                    const endDate = new Date("{{ $firstOffer->enddate }}").getTime();
+
+                    // Update the countdown every 1 second
+                    const countdownFunction = setInterval(() => {
+                        const now = new Date().getTime();
+                        const timeRemaining = endDate - now;
+
+                        // Calculate days, hours, minutes, and seconds
+                        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                        // Display the result in the respective elements
+                        document.getElementById("days").innerText = days;
+                        document.getElementById("hours").innerText = hours;
+                        document.getElementById("minutes").innerText = minutes;
+                        document.getElementById("seconds").innerText = seconds;
+
+                        // If the countdown is over, display a message
+                        if (timeRemaining < 0) {
+                            clearInterval(countdownFunction);
+                            document.getElementById("cz-countdown").innerHTML = "EXPIRED";
+                        }
+
+
+
+
+
+                        const progressBar = document.getElementById("flash-deal-progress-bar");
+            progressBar.style.width = progressPercentage + "%";
+            progressBar.setAttribute('aria-valuenow', progressPercentage.toFixed(2));
+
+            // If the countdown is over, stop the interval and update UI
+            if (timeRemaining < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("cz-countdown").innerHTML = "EXPIRED";
+                progressBar.style.width = "100%";
+            }
+
+
+                    }, 1000);
+                </script>
+            @endif
     </div>
 
-
-        <a href="/product/all" class="text-black">See All</a>
-    </div>
-        <div class="row mt-4">
 
 
             @php
             $FlashSellingProducts = $products->filter(function ($item) {
                 return $item->ItemTag == 1;
-            })->take(5);
+            })->take(4);
         @endphp
 
             @foreach ($FlashSellingProducts as $product)
@@ -107,3 +158,4 @@
         </div>
     </div>
     </div>
+

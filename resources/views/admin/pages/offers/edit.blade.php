@@ -41,9 +41,21 @@
                                                     placeholder="{{ __('Section Title') }}">
                                             </div>
 @if($edit->id == 1)
+
+<div class="input__group mb-25">
+    <label for="size">{{ __('Offer Banner (Optional)') }}</label>
+    <input type="file" id="offerbanner" name="offerbanner">
+    <div class="mt-4">
+    @if(isset($edit->offerbanner))
+        <img src="{{ asset('storage/' . $edit->offerbanner) }}" alt="banner" style="max-width: 30%; height: 100px;">
+    @else
+        <p>No banner uploaded</p>
+    @endif
+</div>
+</div>
                                             <div class="input__group mb-25">
                                                 <label for="size">{{ __('End Date') }}</label>
-                                                <input type="date" id="enddate" name="enddate">
+                                                <input type="date" id="enddate" name="enddate" value="{{ $edit->enddate }}">
                                             </div>
 @endif
                                             <div class="input__button">

@@ -9,6 +9,7 @@ class Offer extends Model
     use HasFactory;
     protected $fillable = [
         'title',
+        'offerbanner',
         'enddate'
     ];
 

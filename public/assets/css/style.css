@@ -9481,6 +9481,13 @@ secendary-tabs
   line-height: 2.6rem;
   font-weight: 400;
   color: #777777;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  height: 48px;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-single-area .product-single-details .product-info .product-color-area {

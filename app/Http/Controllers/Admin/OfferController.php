@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\Controller;
@@ -45,54 +46,123 @@ class OfferController extends Controller
         return view('admin.pages.offers.create', $data);
     }
 
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'enddate' => 'string|max:255',
+    //     ]);
+
+    //     $offer = Offer::create([
+    //         'title' => $request->title,
+    //         'enddate' => $request->enddate
+    //     ]);
+
+    //     if ($offer) {
+    //         return redirect()->route('admin.offers.index')->with('success', __('Successfully Stored!'));
+    //     }
+    //     return redirect()->back()->with('error', __('Failed to Store!'));
+    // }
+
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'enddate' => 'string|max:255',
-        ]);
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'enddate' => 'string|max:255',
+        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+    ]);
 
-        $offer = Offer::create([
-            'title' => $request->title,
-            'enddate' => $request->enddate
-        ]);
+    $bannerPath = null;
+    if ($request->hasFile('offerbanner')) {
+        $bannerPath = $request->file('offerbanner')->store('banners', 'public'); // Save image to 'public/banners'
+    }
 
-        if ($offer) {
-            return redirect()->route('admin.offers.index')->with('success', __('Successfully Stored!'));
+    $offer = Offer::create([
+        'title' => $request->title,
+        'enddate' => $request->enddate,
+        'offerbanner' => $bannerPath,
+    ]);
+
+    if ($offer) {
+        return redirect()->route('admin.offers.index')->with('success', __('Successfully Stored!'));
+    }
+    return redirect()->back()->with('error', __('Failed to Store!'));
+}
+
+
+
+public function edit($id)
+{
+    $data['title'] = __('Edit Offer');
+    $data['edit'] = Offer::findOrFail($id);
+    return view('admin.pages.offers.edit', $data);
+}
+
+public function update(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+    ]);
+
+    $id = $request->id;
+    $offer = Offer::findOrFail($id);
+    $bannerPath = $offer->offerbanner;
+
+    if ($request->hasFile('offerbanner')) {
+        // Optionally delete the old banner if it exists
+        if ($bannerPath) {
+            Storage::disk('public')->delete($bannerPath);
         }
-        return redirect()->back()->with('error', __('Failed to Store!'));
+
+        // Store the new banner
+        $bannerPath = $request->file('offerbanner')->store('banners', 'public');
     }
 
-    public function edit($id)
-    {
-        $data['title'] = __('Edit Offer');
-        $data['edit'] = Offer::findOrFail($id);
-        return view('admin.pages.offers.edit', $data);
+    $offer->update([
+        'title' => $request->title,
+        'enddate' => $request->enddate,
+        'offerbanner' => $bannerPath,
+    ]);
+
+    if ($offer) {
+        return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
     }
+    return redirect()->back()->with('error', __('Failed to Update!'));
+}
 
-    public function update(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255'
-        ]);
 
-        $id = $request->id;
-        $offer = Offer::where('id', $id)->update([
-            'title' => $request->title,
-            'enddate' => $request->enddate,
-        ]);
 
-        if ($offer) {
-            return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
-        }
-        return redirect()->back()->with('error', __('Failed to Update!'));
-    }
+    // public function edit($id)
+    // {
+    //     $data['title'] = __('Edit Offer');
+    //     $data['edit'] = Offer::findOrFail($id);
+    //     return view('admin.pages.offers.edit', $data);
+    // }
 
-    public function destroy($id)
-    {
-        $offer = Offer::findOrFail($id);
-        $offer->delete();
+    // public function update(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255'
+    //     ]);
 
-        return redirect()->route('admin.offers.index')->with('success', __('Successfully Deleted!'));
-    }
+    //     $id = $request->id;
+    //     $offer = Offer::where('id', $id)->update([
+    //         'title' => $request->title,
+    //         'enddate' => $request->enddate
+    //     ]);
+
+    //     if ($offer) {
+    //         return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
+    //     }
+    //     return redirect()->back()->with('error', __('Failed to Update!'));
+    // }
+
+    // public function destroy($id)
+    // {
+    //     $offer = Offer::findOrFail($id);
+    //     $offer->delete();
+
+    //     return redirect()->route('admin.offers.index')->with('success', __('Successfully Deleted!'));
+    // }
 }
