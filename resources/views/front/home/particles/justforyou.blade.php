@@ -18,8 +18,12 @@
                             <div class="product-flags">
                                 @if ($product->Discount > 0)
                                     <span class="product-flag discount">{{ __('-') }}{{ $product->Discount }} {{__('Sale')}}</span>
+                                @elseif ($product->discountpp > 0)
+                                    <span class="product-flag discount">{{ __('-') }}{{ $product->discountpp }} {{__('Sale')}}</span>
                                 @endif
                             </div>
+
+
                             <ul class="prdouct-btn-wrapper">
                                 <li class="single-product-btn">
                                     <a class="product-btn CompareList" data-id="{{ $product->id }}" title="{{ __('Add To Compare') }}"><i class="icon flaticon-bar-chart"></i></a>
@@ -44,10 +48,10 @@
                                 {!! productReview($product->id) !!}
                                 <div>{{_('(')}} {{ productReviewerNumber($product->id) }} {{_(')')}}</div>
                             </div>
-                            <div class="d-flex gap-2">
+                            {{-- <div class="d-flex gap-2">
                                 <a href="{{ route('single.product', $product->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded" data-id="{{ $product->id }}">{{ __('Buy Now') }}</a>
                                 <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart addedtocart rounded" data-id="{{ $product->id }}">{{ __('Add To Cart') }}</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

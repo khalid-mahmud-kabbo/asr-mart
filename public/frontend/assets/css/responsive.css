@@ -8,21 +8,29 @@
         height: 184px;
     }
     .product-item{
-        width: 19.666667% !important;
+        width: 18.666667% !important;
     }
 
     .under-product{
         width: 24.666667% !important;
     }
+    .date-counter {
+        width: 21.666667% !important;
+    }
+
 }
 @media (min-width: 992px) and (max-width: 1200px) {
 
     .product-item{
-        width: 19.666667% !important;
+        width: 18.666667% !important;
     }
 
     .under-product{
         width: 24.666667% !important;
+    }
+
+    .date-counter {
+        width: 21.666667% !important;
     }
 
 }
@@ -40,11 +48,14 @@
     }
 
     .product-item{
-        width: 19.666667% !important;
+        width: 18.666667% !important;
     }
 
     .under-product{
         width: 24.666667% !important;
+    }
+    .date-counter {
+        width: 21.666667% !important;
     }
 }
 
@@ -114,13 +125,16 @@
 }
 
 .product-item{
-    width: 19.666667% !important;
+    width: 18.666667% !important;
 }
 
 .under-product{
     width: 24.666667% !important;
 }
 /* Checkout Page New Login Box End */
+.date-counter {
+    width: 21.666667% !important;
+}
 
 }
 @media (max-width: 991px) {
@@ -199,11 +213,15 @@
 }
 
 .product-item{
-    width: 19.666667% !important;
+    width: 18.666667% !important;
 }
 
 .under-product{
     width: 24.666667% !important;
+}
+
+.date-counter {
+    width: 21.666667% !important;
 }
 
 }
@@ -213,12 +231,17 @@
 
 @media (min-width: 992px) {
     .product-item{
-        width: 19.666667% !important;
+        width: 18.666667% !important;
     }
 
     .under-product{
         width: 24.666667% !important;
     }
+
+    .date-counter {
+        width: 21.666667% !important;
+    }
+
 }
 
 @media (max-width: 767px) {
@@ -285,7 +308,7 @@
 
 .for-mobile-contact{
     display: block !important;
-margin-top: 2rem;
+margin-bottom: 2rem;
 }
 .copiright{
     font-size: smaller !important;
@@ -313,7 +336,13 @@ margin-top: 2rem;
 }
 
 .product-area .product-section-top {
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.date-counter {
+    width: 100.666667% !important;
+    margin-bottom: 2rem;
 }
 
 }
@@ -402,7 +431,12 @@ margin-top: 2rem;
 }
 
 .product-area .product-section-top {
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.date-counter {
+    width: 100.666667% !important;
+    margin-bottom: 2rem;
 }
 
 }
@@ -498,7 +532,12 @@ margin-top: 2rem;
     }
 
     .product-area .product-section-top {
-        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .date-counter {
+        width: 100.666667% !important;
+        margin-bottom: 2rem;
     }
     /* Home 2 Product */
 }

@@ -24,6 +24,7 @@ class Product extends Model
         'ItemTag',
         'Price',
         'Discount',
+        'Discountpp',
         'Discount_Price',
         'Quantity',
         'Sold',

@@ -242,6 +242,7 @@ class ProductController extends Controller
             'Category_Id' => $data['en_category_name'],
             'Price' => $data['price'],
             'Discount' => $data['discount'],
+            'Discountpp' => $data['discountpp'],
             'Discount_Price' => $data['discount_price'],
             'en_About' => $data['en_about'],
             'en_Description' => $data['en_description'],
@@ -303,6 +304,7 @@ class ProductController extends Controller
             'Category_Id' => $data['en_category_name'],
             'Price' => $data['price'],
             'Discount' => $data['discount'],
+            'Discountpp' => $data['discountpp'],
             'Discount_Price' => $data['discount_price'],
             'en_About' => $data['en_about'],
             'en_Description' => $data['en_description'],
@@ -412,6 +414,7 @@ class ProductController extends Controller
             'Category_Id' => $data['en_category_name'],
             'Price' => $data['price'],
             'Discount' => $data['discount'],
+            'Discountpp' => $data['discountpp'],
             'Discount_Price' => $data['discount_price'],
             'en_About' => $data['en_about'],
             'en_Description' => $data['en_description'],
@@ -544,32 +547,32 @@ class ProductController extends Controller
             'license_key',
             'affiliate_link',
         ]);
-        // if (!empty($request->primary_image)) {
-        //     $data['primary_image'] = fileUpload($request['primary_image'], ProductImage());
-        // } else {
-        //     $data['primary_image'] = $product->Primary_Image;
-        // }
-        // if (!empty($request->image_two)) {
-        //     $data['img_two'] = fileUpload($request['image_two'], ProductImage());
-        // } else {
-        //     $data['img_two'] = $product->Image2;
-        // }
+        if (!empty($request->primary_image)) {
+            $data['primary_image'] = fileUpload($request['primary_image'], ProductImage());
+        } else {
+            $data['primary_image'] = $product->Primary_Image;
+        }
+        if (!empty($request->image_two)) {
+            $data['img_two'] = fileUpload($request['image_two'], ProductImage());
+        } else {
+            $data['img_two'] = $product->Image2;
+        }
 
-        // if (!empty($request->image_three)) {
-        //     $data['img_three'] = fileUpload($request['image_three'], ProductImage());
-        // } else {
-        //     $data['img_three'] = $product->Image3;
-        // }
-        // if (!empty($request->image_four)) {
-        //     $data['img_four'] = fileUpload($request['image_four'], ProductImage());
-        // } else {
-        //     $data['img_four'] = $product->Image4;
-        // }
-        // if (!empty($request->image_five)) {
-        //     $data['img_five'] = fileUpload($request['image_five'], ProductImage());
-        // } else {
-        //     $data['img_five'] = $product->Image5;
-        // }
+        if (!empty($request->image_three)) {
+            $data['img_three'] = fileUpload($request['image_three'], ProductImage());
+        } else {
+            $data['img_three'] = $product->Image3;
+        }
+        if (!empty($request->image_four)) {
+            $data['img_four'] = fileUpload($request['image_four'], ProductImage());
+        } else {
+            $data['img_four'] = $product->Image4;
+        }
+        if (!empty($request->image_five)) {
+            $data['img_five'] = fileUpload($request['image_five'], ProductImage());
+        } else {
+            $data['img_five'] = $product->Image5;
+        }
 
         $data['status'] = checkBoxValue($request->status);
         $data['feature'] = checkBoxValue($request->feature);
@@ -630,16 +633,17 @@ class ProductController extends Controller
             'Category_Id' => is_null($data['en_category_name']) ? $product->Category_Id : $data['en_category_name'],
             'Price' => is_null($data['price']) ? $product->Price : $data['price'],
             'Discount' => is_null($data['discount']) ? $product->Discount : $data['discount'],
+            'Discountpp' => is_null($data['discountpp']) ? $product->Discount : $data['discountpp'],
             'Discount_Price' => is_null($data['discount_price']) ? $product->Discount_Price : $data['discount_price'],
             'en_About' => is_null($data['en_about']) ? $product->en_About : $data['en_about'],
             'en_Description' => is_null($data['en_description']) ? $product->en_Description : $data['en_description'],
-            'en_ShippingReturn' => is_null($data['en_shippingreturn']) ? $product->en_ShippingReturn : $data['en_shippingreturn'],
-            'en_AdditionalInformation' => is_null($data['en_additionalinformation']) ? $product->en_AdditionalInformation : $data['en_additionalinformation'],
+            // 'en_ShippingReturn' => is_null($data['en_shippingreturn']) ? $product->en_ShippingReturn : $data['en_shippingreturn'],
+            // 'en_AdditionalInformation' => is_null($data['en_additionalinformation']) ? $product->en_AdditionalInformation : $data['en_additionalinformation'],
             'fr_Product_Name' => is_null($data['fr_product_name']) ? $product->fr_Product_Name : $data['fr_product_name'],
             'fr_About' => is_null($data['fr_about']) ? $product->fr_About : $data['fr_about'],
             'fr_Description' => is_null($data['fr_description']) ? $product->fr_Description : $data['fr_description'],
-            'fr_ShippingReturn' => is_null($data['fr_shippingreturn']) ? $product->fr_ShippingReturn : $data['fr_shippingreturn'],
-            'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
+            // 'fr_ShippingReturn' => is_null($data['fr_shippingreturn']) ? $product->fr_ShippingReturn : $data['fr_shippingreturn'],
+            // 'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
             'Quantity' => is_null($data['qty']) ? $product->Quantity : $data['qty'],
             'ItemTag' => is_null($data['item_teg']) ? $product->ItemTag : $data['item_teg'],
             'Primary_Image' => $data['primary_image'],

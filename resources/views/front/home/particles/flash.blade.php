@@ -49,37 +49,24 @@
 
 
                 <script>
-                    // Set the start and end dates from PHP to JavaScript
-                    const offerStartDate = new Date("{{ $offerStartDate }}").getTime();
-                    const offerEndDate = new Date("{{ $firstOffer->enddate }}").getTime();
-
-                    // Update the countdown and progress bar every 1 second
-                    const countdownFunction = setInterval(() => {
+                        const offerStartDate = new Date("{{ $offerStartDate }}").getTime();
+                        const offerEndDate = new Date("{{ $firstOffer->enddate }}").getTime();
+                        const countdownFunction = setInterval(() => {
                         const now = new Date().getTime();
                         const totalDuration = offerEndDate - offerStartDate;
                         const timeRemaining = offerEndDate - now;
-
-                        // Calculate days, hours, minutes, and seconds
                         const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
                         const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                        // Update countdown display
                         document.getElementById("days").innerText = days;
                         document.getElementById("hours").innerText = hours;
                         document.getElementById("minutes").innerText = minutes;
                         document.getElementById("seconds").innerText = seconds;
-
-                        // Calculate progress percentage
                         const progressPercentage = ((totalDuration - timeRemaining) / totalDuration) * 100;
-
-                        // Update progress bar
                         const progressBar = document.getElementById("flash-deal-progress-bar");
                         progressBar.style.width = progressPercentage + "%";
                         progressBar.setAttribute('aria-valuenow', progressPercentage.toFixed(2));
-
-                        // If the countdown is over, stop the interval and update UI
                         if (timeRemaining < 0) {
                             clearInterval(countdownFunction);
                             document.getElementById("cz-countdown").innerHTML = "EXPIRED";
@@ -87,53 +74,6 @@
                         }
                     }, 1000);
                 </script>
-
-
-                {{-- <script>
-                    // Set the end date from PHP to JavaScript
-                    const endDate = new Date("{{ $firstOffer->enddate }}").getTime();
-
-                    // Update the countdown every 1 second
-                    const countdownFunction = setInterval(() => {
-                        const now = new Date().getTime();
-                        const timeRemaining = endDate - now;
-
-                        // Calculate days, hours, minutes, and seconds
-                        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                        // Display the result in the respective elements
-                        document.getElementById("days").innerText = days;
-                        document.getElementById("hours").innerText = hours;
-                        document.getElementById("minutes").innerText = minutes;
-                        document.getElementById("seconds").innerText = seconds;
-
-                        // If the countdown is over, display a message
-                        if (timeRemaining < 0) {
-                            clearInterval(countdownFunction);
-                            document.getElementById("cz-countdown").innerHTML = "EXPIRED";
-                        }
-
-
-
-
-
-                        const progressBar = document.getElementById("flash-deal-progress-bar");
-            progressBar.style.width = progressPercentage + "%";
-            progressBar.setAttribute('aria-valuenow', progressPercentage.toFixed(2));
-
-            // If the countdown is over, stop the interval and update UI
-            if (timeRemaining < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("cz-countdown").innerHTML = "EXPIRED";
-                progressBar.style.width = "100%";
-            }
-
-
-                    }, 1000);
-                </script> --}}
             @endif
     </div>
 
@@ -185,14 +125,14 @@
                             <div class="pricer d-flex">
                             {!! productReview($product->id) !!} <div>{{_('(')}} {{ productReviewerNumber($product->id) }} {{_(')')}}</div>
 </div>
-<div class="d-flex gap-2">
+{{-- <div class="d-flex gap-2">
     <a href="{{ route('single.product', $product->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded"
         data-id="{{ $product->id }}">{{ __('Buy Now') }}</a>
 
     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" stroke='#FCA610'  class="add-cart addCart addedtocart rounded"
         data-id="{{ $product->id }}">{{ __('Add To Cart') }}</a>
 
-</div>
+</div> --}}
                         </div>
                     </div>
 
