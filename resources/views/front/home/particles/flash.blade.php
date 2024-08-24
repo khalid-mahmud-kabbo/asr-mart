@@ -8,6 +8,7 @@
 
                 @php
                 $firstOffer = $offers->first();
+                $offerStartDate = $firstOffer->updated_at;
             @endphp
 
             @if($firstOffer)
@@ -37,14 +38,58 @@
                             <span class="cz-countdown-text">Sec</span>
                         </span>
                     </span>
-                    <div class="progress __progress mt-4">
+                    <div class="progress __progress">
                         <div id="flash-deal-progress-bar" class="progress-bar flash-deal-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+
                 </div>
 
 
 
+
+
                 <script>
+                    // Set the start and end dates from PHP to JavaScript
+                    const offerStartDate = new Date("{{ $offerStartDate }}").getTime();
+                    const offerEndDate = new Date("{{ $firstOffer->enddate }}").getTime();
+
+                    // Update the countdown and progress bar every 1 second
+                    const countdownFunction = setInterval(() => {
+                        const now = new Date().getTime();
+                        const totalDuration = offerEndDate - offerStartDate;
+                        const timeRemaining = offerEndDate - now;
+
+                        // Calculate days, hours, minutes, and seconds
+                        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                        // Update countdown display
+                        document.getElementById("days").innerText = days;
+                        document.getElementById("hours").innerText = hours;
+                        document.getElementById("minutes").innerText = minutes;
+                        document.getElementById("seconds").innerText = seconds;
+
+                        // Calculate progress percentage
+                        const progressPercentage = ((totalDuration - timeRemaining) / totalDuration) * 100;
+
+                        // Update progress bar
+                        const progressBar = document.getElementById("flash-deal-progress-bar");
+                        progressBar.style.width = progressPercentage + "%";
+                        progressBar.setAttribute('aria-valuenow', progressPercentage.toFixed(2));
+
+                        // If the countdown is over, stop the interval and update UI
+                        if (timeRemaining < 0) {
+                            clearInterval(countdownFunction);
+                            document.getElementById("cz-countdown").innerHTML = "EXPIRED";
+                            progressBar.style.width = "100%";
+                        }
+                    }, 1000);
+                </script>
+
+
+                {{-- <script>
                     // Set the end date from PHP to JavaScript
                     const endDate = new Date("{{ $firstOffer->enddate }}").getTime();
 
@@ -88,7 +133,7 @@
 
 
                     }, 1000);
-                </script>
+                </script> --}}
             @endif
     </div>
 
