@@ -31,6 +31,7 @@ use App\Models\Language;
 use App\Models\Admin\OrderDetails;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Admin\SpecialOffer;
+use App\Models\Admin\Offer;
 
 if (!function_exists('fileUpload')) {
     function fileUpload($img, $path, $user_file_name = null, $width = null, $height = null, $defaultFileName = null)
@@ -95,6 +96,13 @@ if (!function_exists('SpecialOffer')) {
     }
 }
 
+if (!function_exists('ImageOfferNew')) {
+    function ImageOfferNew()
+    {
+        return Offer::first();
+    }
+}
+
 function currencySymbol($array = null)
 {
     if (!isset($array[0])) {
@@ -155,6 +163,12 @@ if (!function_exists('BannerImage')) {
     function BannerImage()
     {
         return 'uploaded_files/banner/';
+    }
+}
+if (!function_exists('offerImageBanner')) {
+    function offerImageBanner()
+    {
+        return 'uploaded_files/offerimage/';
     }
 }
 if (!function_exists('GeneralSettingsImage')) {
