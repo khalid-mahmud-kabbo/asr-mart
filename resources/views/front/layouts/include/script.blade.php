@@ -13,11 +13,11 @@
 <script src="{{ asset('admin/js/toastr.min.js') }}"></script>
 
 <script>
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            document.getElementById('whatsapp').classList.add('show');
-        }, 5000); // 5000 milliseconds = 5 seconds
-    });
+    // window.addEventListener('load', function() {
+    //     setTimeout(function() {
+    //         document.getElementById('whatsapp').classList.add('show');
+    //     }, 5000); // 5000 milliseconds = 5 seconds
+    // });
 
 
 

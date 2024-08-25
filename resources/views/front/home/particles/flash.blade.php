@@ -38,7 +38,7 @@
                             <span class="cz-countdown-text">Sec</span>
                         </span>
                     </span>
-                    <div class="progress __progress">
+                    <div class="progress __progress mt-4">
                         <div id="flash-deal-progress-bar" class="progress-bar flash-deal-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
 

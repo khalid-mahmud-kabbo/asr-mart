@@ -170,7 +170,7 @@
                                                     <label
                                                         for="exampleInputEmail1">{{ __('Discount (in Amount)') }}</label>
                                                     <input type="text" class="form-control" id="discountpp" name="discountpp"
-                                                        value="{{ $product->Discountpp }}">
+                                                        value="{{ $product->discountpp }}">
                                                 </div>
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <label for="exampleInputEmail1">{{ __('Discount Price') }}</label>

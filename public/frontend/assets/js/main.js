@@ -927,19 +927,18 @@ $('.slide-image')
 
 
 
-        const hideMessage = ()=>{
-            const hidemessage = document.getElementById('hidemessage');
+        // const hideMessage = ()=>{
+        //     const hidemessage = document.getElementById('hidemessage');
 
 
 
-        }
+        // }
 
 
-        document.getElementById("hidemessage").addEventListener("click", function() {
-            document.getElementById("message").classList.add("remove");
-        });
+        // document.getElementById("hidemessage").addEventListener("click", function() {
+        //     document.getElementById("message").classList.add("remove");
+        // });
 
 
 
 
-      
