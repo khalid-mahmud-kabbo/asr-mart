@@ -11,6 +11,10 @@
         width: 19.666667% !important;
     }
 
+    .product-item-flash{
+        width: 18.666667% !important;
+    }
+
     .under-product{
         width: 24.666667% !important;
     }
@@ -23,6 +27,10 @@
 
     .product-item{
         width: 19.666667% !important;
+    }
+
+    .product-item-flash{
+        width: 18.666667% !important;
     }
 
     .under-product{
@@ -49,6 +57,10 @@
 
     .product-item{
         width: 19.666667% !important;
+    }
+
+    .product-item-flash{
+        width: 18.666667% !important;
     }
 
     .under-product{
@@ -126,6 +138,10 @@
 
 .product-item{
     width: 19.666667% !important;
+}
+
+.product-item-flash{
+    width: 18.666667% !important;
 }
 
 .under-product{
@@ -215,6 +231,9 @@
 .product-item{
     width: 19.666667% !important;
 }
+.product-item-flash{
+    width: 18.666667% !important;
+}
 
 .under-product{
     width: 24.666667% !important;
@@ -232,6 +251,10 @@
 @media (min-width: 992px) {
     .product-item{
         width: 19.666667% !important;
+    }
+
+    .product-item-flash{
+        width: 18.666667% !important;
     }
 
     .under-product{
@@ -331,6 +354,10 @@ margin-bottom: 2rem;
     width: 16.666667% !important;
 }
 
+.product-item-flash{
+    width: 16.666667% !important;
+}
+
 .under-product {
     width: 100% !important;
 }
@@ -420,6 +447,10 @@ margin-bottom: 2rem;
     margin-bottom: 3rem;
 }
 .product-item{
+    width: 16.666667% !important;
+}
+
+.product-item-flash{
     width: 16.666667% !important;
 }
 
@@ -522,6 +553,9 @@ margin-bottom: 2rem;
     }
 
     .product-item{
+        width: 100% !important;
+    }
+    .product-item-flash{
         width: 100% !important;
     }
     .under-product {
