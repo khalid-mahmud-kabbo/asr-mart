@@ -14,7 +14,7 @@
             @if($firstOffer)
                 <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
                 <div class="offer-image-home mb-4">
-                    <img src="{{ asset(offerImageBanner() . ImageOfferNew()->offerbanner) }}" class="rounded" alt="#">
+                    <img src="{{ asset(offerImageBanner() . ImageOfferNew()->offerbanner) }}" class="rounded" alt="{{ $firstOffer->title }}">
                 </div>
                 <div class="countdown-background">
                     <span id="cz-countdown" class="cz-countdown d-flex justify-content-center align-items-center flash-deal-countdown">

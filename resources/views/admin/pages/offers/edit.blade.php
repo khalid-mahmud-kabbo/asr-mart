@@ -47,7 +47,7 @@
     <input type="file" id="offerbanner" name="offerbanner">
     <div class="mt-4">
     @if(isset($edit->offerbanner))
-        <img src="{{ asset('storage/' . $edit->offerbanner) }}" alt="banner" style="max-width: 30%; height: 100px;">
+        <img src="{{ asset(offerImageBanner() . ImageOfferNew()->offerbanner) }}" alt="banner" style="max-width: 30%; height: 100px;">
     @else
         <p>No banner uploaded</p>
     @endif
