@@ -46,24 +46,6 @@ class OfferController extends Controller
         return view('admin.pages.offers.create', $data);
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'enddate' => 'string|max:255',
-    //     ]);
-
-    //     $offer = Offer::create([
-    //         'title' => $request->title,
-    //         'enddate' => $request->enddate
-    //     ]);
-
-    //     if ($offer) {
-    //         return redirect()->route('admin.offers.index')->with('success', __('Successfully Stored!'));
-    //     }
-    //     return redirect()->back()->with('error', __('Failed to Store!'));
-    // }
-
     public function store(Request $request)
 {
     $request->validate([
@@ -109,15 +91,10 @@ public function update(Request $request)
     $offer = Offer::findOrFail($id);
     $bannerPath = $offer->offerbanner;
 
-    if ($request->hasFile('offerbanner')) {
-        // Optionally delete the old banner if it exists
-        if ($bannerPath) {
-            Storage::disk('public')->delete($bannerPath);
-        }
 
-        // Store the new banner
-        $bannerPath = $request->file('offerbanner')->store('banners', 'public');
-    }
+        if ($request->hasFile('offerbanner')) {
+            $bannerPath = $request->file('offerbanner')->store('banners', 'public'); // Save image to 'public/banners'
+        }
 
     $offer->update([
         'title' => $request->title,
