@@ -37,9 +37,6 @@ class OfferController extends Controller
 }
 
 
-
-
-
     public function create()
     {
         $data['title'] = __('Create Offer');
@@ -108,38 +105,4 @@ public function update(Request $request)
     return redirect()->back()->with('error', __('Failed to Update!'));
 }
 
-
-
-    // public function edit($id)
-    // {
-    //     $data['title'] = __('Edit Offer');
-    //     $data['edit'] = Offer::findOrFail($id);
-    //     return view('admin.pages.offers.edit', $data);
-    // }
-
-    // public function update(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required|string|max:255'
-    //     ]);
-
-    //     $id = $request->id;
-    //     $offer = Offer::where('id', $id)->update([
-    //         'title' => $request->title,
-    //         'enddate' => $request->enddate
-    //     ]);
-
-    //     if ($offer) {
-    //         return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
-    //     }
-    //     return redirect()->back()->with('error', __('Failed to Update!'));
-    // }
-
-    // public function destroy($id)
-    // {
-    //     $offer = Offer::findOrFail($id);
-    //     $offer->delete();
-
-    //     return redirect()->route('admin.offers.index')->with('success', __('Successfully Deleted!'));
-    // }
 }
