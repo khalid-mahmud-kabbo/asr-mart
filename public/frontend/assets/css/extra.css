@@ -1391,7 +1391,7 @@ a.product-link {
 
 
 .deal-of-the-day {
-    background-color: #d1d1d1;
+    background-color: #EEEEFE;
     border: 1px solid #44BBFF;
     border-radius: .5rem;
 }
@@ -1721,8 +1721,16 @@ a.product-link {
 }
 
 .countdown-background {
-    background: #26CD59;
-    color: #fff;
+    background: #EEEEFE;
+    color: #000;
+}
+
+.cz-countdown .cz-countdown-value, .cz-countdown-text {
+    color: #000 !important;
+}
+
+.cz-countdown-days{
+    text-align: center;
 }
 
 .cz-countdown {
