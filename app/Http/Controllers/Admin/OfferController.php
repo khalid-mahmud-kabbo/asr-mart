@@ -77,32 +77,73 @@ public function edit($id)
     return view('admin.pages.offers.edit', $data);
 }
 
+// public function update(Request $request)
+// {
+//     $request->validate([
+//         'title' => 'required|string|max:255',
+//         'offerbanner' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+//     ]);
+
+//     $id = $request->id;
+//     $offer = Offer::findOrFail($id);
+//     $bannerPath = $offer->offerbanner;
+
+//         if ($request->hasFile('offerbanner')) {
+//             $bannerPath = $request->file('offerbanner')->store('banners', 'public'); // Save image to 'public/banners'
+//         }
+
+//     $offer->update([
+//         'title' => $request->title,
+//         'enddate' => $request->enddate,
+//         'offerbanner' => $bannerPath,
+//     ]);
+
+//     if ($offer) {
+//         return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
+//     }
+//     return redirect()->back()->with('error', __('Failed to Update!'));
+// }
+
 public function update(Request $request)
 {
+    // Validate the request
     $request->validate([
         'title' => 'required|string|max:255',
-        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+        'offerbanner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+        'enddate' => 'nullable|date', // Assuming enddate is optional and should be validated if present
     ]);
 
+    // Find the offer by ID
     $id = $request->id;
     $offer = Offer::findOrFail($id);
-    $bannerPath = $offer->offerbanner;
 
+    // Handle image upload if a new image is provided
+    if ($request->hasFile('offerbanner')) {
+        // Get the old image path
+        $oldImage = $offer->offerbanner;
 
-        if ($request->hasFile('offerbanner')) {
-            $bannerPath = $request->file('offerbanner')->store('banners', 'public'); // Save image to 'public/banners'
+        // Upload the new image and get the new path
+        $bannerPath = $request->file('offerbanner')->store('upload_files/offerbanner', 'public');
+
+        // Optionally delete the old image file
+        if ($oldImage && Storage::disk('public')->exists($oldImage)) {
+            Storage::disk('public')->delete($oldImage);
         }
+    } else {
+        // If no new image is uploaded, keep the old path
+        $bannerPath = $offer->offerbanner;
+    }
 
+    // Update the offer with new values
     $offer->update([
         'title' => $request->title,
         'enddate' => $request->enddate,
         'offerbanner' => $bannerPath,
     ]);
 
-    if ($offer) {
-        return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
-    }
-    return redirect()->back()->with('error', __('Failed to Update!'));
+    // Redirect with success message
+    return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
 }
+
 
 }
