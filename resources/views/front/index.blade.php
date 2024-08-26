@@ -8,6 +8,10 @@
         @include('front.home.home')
 @endsection
 
+
+
+@if($allsettings['popup_status'] == 1)
+
 @section('subscribe_pop_up_modal')
     @if (!session()->has('dontshoW'))
         <!-- Page Load Popup Modal End -->
@@ -49,3 +53,5 @@
         <script src="{{ asset('frontend/assets/js/pages/home.js') }}"></script>
     @endpush()
 @endsection
+
+@endif

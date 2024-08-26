@@ -174,6 +174,21 @@
                                                 <img src="{{ asset(IMG_ADVERTISE_PATH . $allsettings['popup_image']) }}"
                                                     id="target6" alt="{{ __('Image') }}" class="admin_image mt-3" />
                                             </div>
+
+                                            <div class="input__group mb-25">
+                                                <label for="popup_status">{{ __('PopUp Status') }}</label>
+                                                <select name="popup_status" id="popup_status"
+                                                    class="form-control">
+                                                    <option value="1"
+                                                        {{ $allsettings['popup_status'] == '1' ? 'selected' : '' }}>
+                                                        {{ __('Show') }}</option>
+                                                    <option value="0"
+                                                        {{ $allsettings['popup_status'] == '0' ? 'selected' : '' }}>
+                                                        {{ __('Hide') }}</option>
+                                                </select>
+                                            </div>
+
+
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update') }}</button>
                                             </div>
