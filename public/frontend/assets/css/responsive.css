@@ -613,5 +613,22 @@ margin-bottom: 2rem;
         width: 100.666667% !important;
         margin-bottom: 2rem;
     }
+
+
+
+    .product-single-area .product-single-details .product-info .product-bottom-button .add-cart {
+        width: calc(50% - 12px) !important;
+    }
+
+
+    .product-single-area .product-single-details .product-info .product-bottom-button .primary-btn {
+        width: calc(50% - 12px) !important;
+        text-align: center;
+    }
+
+    .primary-btn {
+        padding: 1.5rem !important;
+        font-size: unset;
+    }
     /* Home 2 Product */
 }
