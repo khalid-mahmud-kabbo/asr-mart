@@ -182,7 +182,7 @@
                                                     <span class="price">{{currencyConverter($product->Discount_Price)}}</span>
                                                 </div>
                                                 <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                                <a href="javascript:void(0)" title="{{__('Add to cart')}}" class="add-cart addCart" data-id="{{$product->id}}">{{__('Add To Cart')}} <i class="icon fas fa-plus-circle"></i></a>
+                                                {{-- <a href="javascript:void(0)" title="{{__('Add to cart')}}" class="add-cart addCart" data-id="{{$product->id}}">{{__('Add To Cart')}} <i class="icon fas fa-plus-circle"></i></a> --}}
                                             </div>
                                         </div>
                                     </div>

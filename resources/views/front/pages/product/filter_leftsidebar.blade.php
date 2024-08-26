@@ -29,9 +29,9 @@
                 </div>
                 <p class="prdouct-content">{{langConverter($product->en_About,$product->fr_About)}}</p>
                 <ul class="prdouct-btn-wrapper d-flex align-items-center">
-                    <li class="single-product-btn">
+                    {{-- <li class="single-product-btn">
                         <a href="javascript:void(0)" title="{{__('Add To Cart')}}" class="add-cart addCart" data-id="{{$product->id}}">{{__('Add To Cart')}} <i class="icon fas fa-plus-circle"></i></a>
-                    </li>
+                    </li> --}}
                     <li class="single-product-btn">
                         <a class="product-btn MyWishList" title="{{__('Add To Wishlist')}}" data-id="{{$product->id}}"><i class="icon flaticon-like"></i></a>
                     </li>

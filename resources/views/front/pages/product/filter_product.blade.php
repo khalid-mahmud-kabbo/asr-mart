@@ -34,7 +34,7 @@
                             <span class="regular-price">{{currencyConverter($product->Price)}}</span>
                             <span class="price">{{currencyConverter($product->Discount_Price)}}</span>
                         </div>
-                        <a href="javascript:void(0)" title="{{__('Add To Cart')}}" class="add-cart addCart" data-id="{{$product->id}}">{{__('Add To Cart')}} <i class="icon fas fa-plus-circle"></i></a>
+                        {{-- <a href="javascript:void(0)" title="{{__('Add To Cart')}}" class="add-cart addCart" data-id="{{$product->id}}">{{__('Add To Cart')}} <i class="icon fas fa-plus-circle"></i></a> --}}
                     </div>
                 </div>
             </div>

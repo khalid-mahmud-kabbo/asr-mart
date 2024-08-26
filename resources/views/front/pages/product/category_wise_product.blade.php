@@ -211,14 +211,14 @@
                                             <div class="pricer d-flex">
                                             {!! productReview($product->id) !!} <div>{{_('(')}} {{ productReviewerNumber($product->id) }} {{_(')')}}</div>
                 </div>
-                <div class="d-flex gap-2">
+                {{-- <div class="d-flex gap-2">
                     <a href="{{ route('single.product', $product->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded"
                         data-id="{{ $product->id }}">{{ __('Buy Now') }}</a>
 
                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" stroke='#FCA610'  class="add-cart addCart addedtocart rounded"
                         data-id="{{ $product->id }}">{{ __('Add To Cart') }}</a>
 
-                </div>
+                </div> --}}
                                         </div>
                                     </div>
 

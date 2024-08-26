@@ -212,7 +212,7 @@
                                         {!! productReview($product->id) !!} <div>{{_('(')}} {{ productReviewerNumber($product->id) }} {{_(')')}}</div>
             </div>
 
-            <div class="d-flex gap-2">
+            {{-- <div class="d-flex gap-2">
                 <a href="{{ route('single.product', $product->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded"
                     data-id="{{ $product->id }}">{{ __('Buy Now') }}</a>
 
@@ -220,7 +220,7 @@
                                             data-id="{{ $product->id }}">{{ __('Add To Cart') }}</a>
 
 
-                                    </div>
+                                    </div> --}}
                                     </div>
                                 </div>
                             </div>
