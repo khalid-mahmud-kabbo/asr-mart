@@ -58,7 +58,7 @@
             @endforeach
         </div>
         <div class="text-center">
-            <a class="loadmore mb-5 mt-3" href="/product/all" target="_blank">Load More Products</a>
+            <a class="loadmore mb-5 mt-3" href="/product/all">Load More Products</a>
         </div>
     </div>
 </div>
