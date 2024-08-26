@@ -55,6 +55,8 @@
                                     @endif
                                 </ul>
                             </div>
+
+
                             <div class="product-slier-big-image">
                                 <div class="product-priview-slide slider slider-for">
                                     <div class="single-slide zoom-container">
@@ -94,10 +96,6 @@
                     <div class="col-lg-6">
                         <div class="product-single-right">
                             <div class="product-info">
-                                @foreach ($products->product_tags as $ppt)
-                                    <h4 class="product-catagory">{{ $ppt->tag }}</h4>
-                                @endforeach
-
                                 <h3 class="product-name">
                                     {{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h3>
                                 <!-- This is server side code. User can not modify it. -->
