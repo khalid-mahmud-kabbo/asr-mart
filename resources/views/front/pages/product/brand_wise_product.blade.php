@@ -40,20 +40,7 @@
                             </form>
                         </div>
 
-                        <div class="single-widget categories-widget">
-                            <h3 class="widget-title">{{__('Categories')}}</h3>
-                            <div class="categories-list">
-                                @foreach($category as $cateogories)
-                                    <div class="single-categorie">
-                                        <div class="categorie-left">
-                                            <input class="form-check-input CheckCategory" type="checkbox"  value="{{$cateogories->en_Category_Name}}">
-                                            <label class="form-check-label">{{$cateogories->en_Category_Name}}</label>
-                                        </div>
-                                        <span class="categories-count">{{productCategoryCount($cateogories->id)}}</span>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+
 
                         <div class="single-widget price-widget">
                             <h3 class="widget-title">{{__('Price')}}</h3>
@@ -70,48 +57,6 @@
                                     <button type="button" class="price-submit PriceSubmit"><i class="fas fa-play"></i></button>
                                 </div>
                             </form>
-                        </div>
-
-                        <div class="single-widget colors-widget">
-                            <h3 class="widget-title">{{__('Colors')}}</h3>
-                            <div class="colors-list">
-                                @foreach($colors as $color)
-                                    <div class="single-colors">
-                                        <div class="colors-left">
-                                            <input style="background: {{$color->ColorCode}}" class="form-check-input checkColor"  type="checkbox" id="{{$color->ColorCode}}" value="{{$color->Name}}">
-                                            <label class="form-check-label" for="{{$color->ColorCode}}">{{$color->Name}}</label>
-                                        </div>
-                                        <span class="colors-count">{{productColorCount($color->id)}}</span>
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>
-                        <div class="single-widget size-widget">
-                            <h3 class="widget-title">{{__('Size')}}</h3>
-                            <div class="size-list">
-                                @foreach($sizes as $size)
-                                    <div class="single-size">
-                                        <input class="form-check-input checkSize" type="checkbox" id="{{$size->id}}" value="{{$size->Size}}">
-                                        <label class="form-check-label" for="{{$size->id}}">{{$size->Size}}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-                        <div class="single-widget brand-widget">
-                            <h3 class="widget-title">{{__('Brand')}}</h3>
-                            <div class="brand-list">
-                                @foreach($brands as $brand)
-                                    <div class="single-brand">
-                                        <div class="brand-left">
-                                            <input class="form-check-input CheckBrand" type="checkbox" value="{{$brand->en_BrandName}}">
-                                            <label class="form-check-label" for="Renuar">{{$brand->en_BrandName}}</label>
-                                        </div>
-                                        <span class="brand-count">{{productBrandCount($brand->id)}}</span>
-                                    </div>
-                                @endforeach
-                            </div>
                         </div>
 
                     </div>
