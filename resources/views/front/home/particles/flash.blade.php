@@ -1,15 +1,19 @@
-<div class="brands-wrapper">
-    <div class="brands">
+@php
+$firstOffer = $offers->first();
+$offerStartDate = $firstOffer->updated_at;
+@endphp
+
+@if($firstOffer->offerstatus == 1)
+
+<div class="brands-wrapper flash brands">
+    <div class="">
 
         <div class="row mt-4">
 
 
             <div class="col-lg-2 col-md-4 col-sm-6 date-counter">
 
-                @php
-                $firstOffer = $offers->first();
-                $offerStartDate = $firstOffer->updated_at;
-            @endphp
+
 
             @if($firstOffer)
                 <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
@@ -144,3 +148,4 @@
     </div>
     </div>
 
+@endif

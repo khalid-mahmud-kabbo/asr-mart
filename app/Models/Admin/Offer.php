@@ -10,7 +10,8 @@ class Offer extends Model
     protected $fillable = [
         'title',
         'offerbanner',
-        'enddate'
+        'enddate',
+        'offerstatus'
     ];
 
 

@@ -1720,7 +1720,7 @@ a.product-link {
 }
 
 .countdown-background {
-    background: #EEEEFE;
+    background: #ee3c22;
     color: #000;
 }
 
@@ -1880,4 +1880,12 @@ width: 20.666667% !important;
 .product-single-area .product-single-left .product-thumbnail-image .slick-slider .slick-list {
     height: unset !important;
     border-radius: .5rem !important;
+}
+
+
+
+.flash{
+padding: 2rem;
+background-color: #EEEEFE;
+border-radius: .5rem;
 }

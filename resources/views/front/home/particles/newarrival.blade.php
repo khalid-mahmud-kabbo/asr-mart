@@ -1,18 +1,18 @@
 <div class="brands-wrapper new-arrivals mt-5">
     <div class="arrivals">
         <div class="row g-0">
+            @php
+            $secondOffer = $offers->skip(1)->first();
+        @endphp
 
 
+@if($secondOffer->offerstatus == 1)
 <div class="col-md-3 deal-of-the-day-wrapper">
 
                 @foreach ($products as $item)
                 @if($item->ItemTag == 2)
 
                 <div class="deal-of-the-day p-4" style="width: 80%; height: 100%;">
-
-                    @php
-                    $secondOffer = $offers->skip(1)->first();
-                @endphp
 
                 @if($secondOffer)
                     <h3 class="text-center text-black">{{ $secondOffer->title }}</h3>
@@ -48,6 +48,8 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
 
 
 </div>
+
+@endif
 
 <div class="col-md-9">
 

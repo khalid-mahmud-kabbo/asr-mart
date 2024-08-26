@@ -58,6 +58,21 @@
                                                 <input type="date" id="enddate" name="enddate" value="{{ $edit->enddate }}">
                                             </div>
 @endif
+
+
+<div class="input__group mb-25">
+    <label for="offerstatus">{{ __('Offer Status') }}</label>
+    <select name="offerstatus" id="offerstatus"
+        class="form-control">
+        <option value="1"
+            {{ $edit->offerstatus == '1' ? 'selected' : '' }}>
+            {{ __('Show') }}</option>
+        <option value="0"
+            {{ $edit->offerstatus == '0' ? 'selected' : '' }}>
+            {{ __('Hide') }}</option>
+    </select>
+</div>
+
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update') }}</button>
                                             </div>

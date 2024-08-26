@@ -98,6 +98,7 @@ $offer->update([
     'title' => $request->title,
     'enddate' => $request->enddate,
     'offerbanner' => $offer->offerbanner,
+    'offerstatus' => $request->offerstatus,
 ]);
 
 return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));
