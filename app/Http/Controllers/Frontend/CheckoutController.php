@@ -130,8 +130,9 @@ class CheckoutController extends Controller
                 Session::put('checkout_email', $billing_create->Email);
 
                 do {
-                    $order_number = $this->generateRandomString(6);
+                    $order_number = $this->generateOrderNumber();
                     $exists_order_number = Order::where('Order_Number', $order_number)->exists();
+
                 } while ($exists_order_number);
                 if (Session::has('Coupon_Id')) {
                     $coupon = Coupon::whereId(Session::get('Coupon_Id'))->first();
@@ -226,6 +227,19 @@ class CheckoutController extends Controller
             return redirect()->back()->with('error', 'Please sign in');
         }
     }
+
+
+//     private function generateOrderNumber()
+// {
+//     return '101';
+// }
+
+private function generateOrderNumber()
+{
+    $last_order = Order::latest()->first();
+    return $last_order ? $last_order->Order_Number + 1 : 101;
+}
+
 
     public function guestCheckoutOrder(Request $request)
     {

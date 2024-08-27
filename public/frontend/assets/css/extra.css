@@ -1904,6 +1904,6 @@ border-radius: .5rem;
 
 .zoom-container {
     width: 492px !important;
-    border: 2px solid #ddd !important;
+    border: 2px solid #d1d1d1 !important;
     overflow: hidden !important;
 }
