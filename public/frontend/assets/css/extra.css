@@ -1339,7 +1339,6 @@ a.product-link {
     position: relative;
     overflow: hidden;
     float: left;
-   margin: 10px;
     height: unset !important;
 }
 
