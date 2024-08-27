@@ -1866,7 +1866,10 @@ width: 20.666667% !important;
 
 
 
-
+.product-item,
+.cart-product-item{
+    width: 100% !important;
+}
 
 
 
