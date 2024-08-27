@@ -635,5 +635,9 @@ margin-bottom: 2rem;
         margin-bottom: 2rem;
         margin-top: 2rem;
     }
+
+    .zoom-container {
+        width: 284px !important;
+    }
     /* Home 2 Product */
 }
