@@ -1857,6 +1857,10 @@ width: 20.666667% !important;
 
 
 
+.offcanvas.offcanvas-end .offcanvas-body .cart-product-list .cart-product-item:first-child .single-grid-product {
+    width: 530% !important;
+}
+
 
 
 

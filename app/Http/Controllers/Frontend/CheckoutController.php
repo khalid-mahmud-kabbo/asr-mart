@@ -112,6 +112,7 @@ class CheckoutController extends Controller
                     'state' => $billing_create->State,
                     'zipcode' => $billing_create->Zipcode,
                     'country' => $billing_create->Country,
+                    'custom_note' => $request->custom_note,
                 ];
 
                 $shipping_addresss = [
@@ -120,7 +121,8 @@ class CheckoutController extends Controller
                     'street' => $shipping_create->Street,
                     'state' => $shipping_create->State,
                     'zipcode' => $shipping_create->Zipcode,
-                    'country' => $shipping_create->Country
+                    'country' => $shipping_create->Country,
+                    'custom_note' => $request->custom_note
                 ];
 
                 Session::put('billing_address', $billing_address);
@@ -500,7 +502,7 @@ class CheckoutController extends Controller
             }
             $data['success'] = true;
         }
-        // mail 
+        // mail
         $this->orderConfirmMail($order);
         return $data;
     }

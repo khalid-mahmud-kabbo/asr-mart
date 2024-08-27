@@ -91,6 +91,16 @@
                                             @endforeach
                                         </select>
                                     </div>
+
+
+                                    <div class="col-lg-12 mt-4">
+                                        <div class="form-group">
+                                            <textarea rows="7" type="text" class="form-control" id="custom_note"
+                                                name="custom_note" placeholder="{{ __('Custom Note') }}"></textarea>
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-lg-12 mt-3">
                                         <div class="form-group form-check terms-agree">
                                             <input type="checkbox" class="form-check-input " id="copy_address" />

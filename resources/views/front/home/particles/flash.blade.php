@@ -8,7 +8,7 @@ $offerStartDate = $firstOffer->updated_at;
 <div class="brands-wrapper flash brands">
     <div class="">
 
-        <div class="row mt-4">
+        <div class="row mt-4 justify-content-between">
 
 
             <div class="col-lg-2 col-md-4 col-sm-6 date-counter">
