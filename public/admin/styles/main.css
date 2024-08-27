@@ -922,7 +922,8 @@ img {
 .header__area {
   width: 100%;
   height: 240px;
-  background-image: url("../images/background/adminbg.jpg");
+  background-color: #bdc3c7;
+  /* background-image: url("../images/background/adminbg.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -13788,7 +13789,8 @@ img {
 }
 
 .main-content__area.bg-img {
-  background-image: url("../images/background/adminbg.jpg");
+  /* background-image: url("../images/background/adminbg.jpg"); */
+  background-color: #bdc3c7;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -13802,6 +13804,7 @@ img {
     padding: 60px;
     backdrop-filter: blur(110px);
     border-radius: 40px;
+    background-color: #000;
 }
 
 @media screen and (max-width: 575px) {
