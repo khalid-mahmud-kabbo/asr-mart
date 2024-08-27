@@ -1899,3 +1899,12 @@ padding: 2rem;
 background-color: #EEEEFE;
 border-radius: .5rem;
 }
+
+
+
+
+.zoom-container {
+    width: 492px !important;
+    border: 2px solid #ddd !important;
+    overflow: hidden !important;
+}
