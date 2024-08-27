@@ -559,7 +559,7 @@ margin-bottom: 2rem;
         width: 50% !important;
     }
     .under-product {
-        width: 100% !important;
+        width: 50% !important;
     }
 
     .prdouct-btn-wrapper{
@@ -629,6 +629,11 @@ margin-bottom: 2rem;
     .primary-btn {
         padding: 1.5rem !important;
         font-size: unset;
+    }
+
+    .product-area .product-section-top {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
     /* Home 2 Product */
 }
