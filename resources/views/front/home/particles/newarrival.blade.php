@@ -10,7 +10,7 @@
 <div class="col-md-3 deal-of-the-day-wrapper">
 
                 @foreach ($products as $item)
-                @if($item->ItemTag == 2)
+                {{-- @if($item->ItemTag == 2) --}}
 
                 <div class="deal-of-the-day p-4" style="width: 80%; height: 100%;">
 
@@ -40,7 +40,7 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
                     </div>
                 </div>
 
-                @endif
+                {{-- @endif --}}
                 @endforeach
 
 
