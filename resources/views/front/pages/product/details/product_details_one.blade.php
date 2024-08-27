@@ -59,7 +59,7 @@
 
                             <div class="product-slier-big-image">
                                 <div class="product-priview-slide slider slider-for">
-                                    <div class="single-slide zoom-container" style="width: 492px !important;">
+                                    <div class="single-slide zoom-container">
                                         <img class="slide-image"
                                              src="{{ asset(ProductImage() . $products->Primary_Image) }}"
                                              alt="{{ __('product') }}" />
