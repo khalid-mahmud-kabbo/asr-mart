@@ -67,6 +67,7 @@ function country($input = null)
             "PZ" => "Pirojpur",
             "RJ" => "Rajbari",
             "RAJ" => "Rajshahi",
+            "CN" => "Chapai Nawabganj",
             "RM" => "Rangamati",
             "RN" => "Rangpur",
             "ST" => "Satkhira",
