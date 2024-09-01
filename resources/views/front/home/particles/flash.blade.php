@@ -16,7 +16,7 @@ $offerStartDate = $firstOffer->updated_at;
 
 
             @if($firstOffer)
-                <h2 class="text-black mb-4">{{ $firstOffer->title }}</h2>
+                <h2 class="text-black mb-4" style="color: #ee3c22;">{{ $firstOffer->title }}</h2>
                 <div class="offer-image-home mb-4">
                     <img src="{{ asset(offerImageBanner() . ImageOfferNew()->offerbanner) }}" class="rounded" alt="{{ $firstOffer->title }}">
                 </div>
