@@ -112,9 +112,15 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
                 </div>
                     <div class="card-body">
                       <h3 class="card-title text-black">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</h3>
-                      <div class="d-flex gap-2">
+                      {{-- <div class="d-flex gap-2">
                         {!! productReview($item->id) !!}
+                        </div> --}}
+
+                        <div class="d-flex gap-2">
+                            {!! productReview($item->id) !!}
+                            <div>{{_('(')}} {{ productReviewerNumber($item->id) }} {{_(')')}}</div>
                         </div>
+
                       <div class="product-price mt-3">
                         <h4 class="price text-black">{{ currencyConverter($item->Discount_Price) }}</h4>
                     </div>

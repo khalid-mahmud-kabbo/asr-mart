@@ -1907,3 +1907,9 @@ border-radius: .5rem;
     border: 2px solid #d1d1d1 !important;
     overflow: hidden !important;
 }
+
+
+
+.review-item.active {
+    color: #FCA610;
+}

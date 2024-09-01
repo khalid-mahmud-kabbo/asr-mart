@@ -5,7 +5,7 @@ $offerStartDate = $firstOffer->updated_at;
 
 @if($firstOffer->offerstatus == 1)
 
-<div class="brands-wrapper flash brands">
+<div class="brands-wrapper flash brands" id="offer-section">
     <div class="">
 
         <div class="row mt-4 justify-content-between">
@@ -75,6 +75,7 @@ $offerStartDate = $firstOffer->updated_at;
                             clearInterval(countdownFunction);
                             document.getElementById("cz-countdown").innerHTML = "EXPIRED";
                             progressBar.style.width = "100%";
+                            document.getElementById("offer-section").style.display = "none";
                         }
                     }, 1000);
                 </script>
