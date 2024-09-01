@@ -1,4 +1,4 @@
-
+{{--
 <div class="js-cookie-consent cookie-consent alert alert-dismissible fade show" role="alert">
     <div class="main-cookie-content">
         <p class="cookie-consent__message m-0">
@@ -19,4 +19,4 @@
         </button>
     @endif
 
-</div>
+</div> --}}
