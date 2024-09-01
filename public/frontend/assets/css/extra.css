@@ -1845,8 +1845,9 @@ width: 20.666667% !important;
     height: 153px;
 }
 
-.offer-image-home img{
-    height: 100%;
+.offer-image-home img {
+    height: 80%;
+    width: 100%;
 }
 
 
