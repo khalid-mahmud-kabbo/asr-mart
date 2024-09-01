@@ -23,7 +23,7 @@
                     <b>{{ __('Name:') }}</b> {{ $bill['name'] }}<br>
                     <b>{{ __('Email:') }}</b> {{ $bill['email'] }}<br>
                     <b>{{ __('Payment Method: ') }}</b> {{ $order->Payment_Method }}<br>
-                    <b>{{ __('TXN: ') }}</b> {{ $order->txn }}
+                    {{-- <b>{{ __('TXN: ') }}</b> {{ $order->txn }} --}}
                 </p>
             </div>
         </div>

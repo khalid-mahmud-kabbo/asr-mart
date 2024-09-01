@@ -510,6 +510,7 @@ private function generateOrderNumber()
                     'Price' => $item->price,
                     'Color' => $item->options->color,
                     'Size' => $item->options->size,
+                    var_dump($item->options),
                     'Quantity' => $item->qty,
                     'Total_Price' => $item->price * $item->qty,
                 ]);

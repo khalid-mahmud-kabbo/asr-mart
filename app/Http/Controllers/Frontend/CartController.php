@@ -55,7 +55,7 @@ class CartController extends Controller
                 'options' =>
                 [
                     'size' => $size_id == 0 ? $size_id : $size_name->Size,
-                    'color' => $color_id == 0 ? $color_id : $color_name->ColorCode,
+                    'color' => $color_id == 0 ? $color_id : $color_name->Name,
                     'image' => $product->Primary_Image,
                     'slug' => $product->en_Product_Slug,
                     'discount_price' => $product->Discount_Price,
