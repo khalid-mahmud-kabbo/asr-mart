@@ -66,17 +66,23 @@ class UserProfileController extends Controller
         }
         return redirect()->back()->with('success', __('Something Went Wrong!'));
     }
+
+
     public function myOrder()
-    {
-        $orders = Order::with('order_details', 'order_details.product')->latest()->get();
-        $data['all_orders'] = $orders->whereIn('Order_Status', [ORDER_PENDING, ORDER_PROCESSING, ORDER_SHIPPED]);
-        $data['delivered_orders'] = $orders->where('Order_Status', ORDER_DELIVERED);
-        $data['canceled_orders'] = $orders->whereIn('Order_Status', [ORDER_CANCELLED, ORDER_DELIVERED_FAILED, ORDER_RETURN]);
-        $data['title'] = __('Orders');
-        $data['description'] = __('Orders');
-        $data['keywords'] = __('Orders');
-        return view('front.pages.user_profile.my_order', $data);
-    }
+{
+    $userId = auth()->id();
+    $orders = Order::with('order_details', 'order_details.product')->where('User_Id', $userId)->latest()->get();
+    $data['all_orders'] = $orders->whereIn('Order_Status', [ORDER_PENDING, ORDER_PROCESSING, ORDER_SHIPPED]);
+    $data['delivered_orders'] = $orders->where('Order_Status', ORDER_DELIVERED);
+    $data['canceled_orders'] = $orders->whereIn('Order_Status', [ORDER_CANCELLED, ORDER_DELIVERED_FAILED, ORDER_RETURN]);
+    $data['title'] = __('Orders');
+    $data['description'] = __('Orders');
+    $data['keywords'] = __('Orders');
+    return view('front.pages.user_profile.my_order', $data);
+}
+
+
+
     public function myReview()
     {
         $data['reviews'] = ProductReview::where('user_id', Auth::id())->with('product')->get();
