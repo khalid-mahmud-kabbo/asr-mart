@@ -29,6 +29,9 @@ class Order extends Model
         'Payment_Method',
         'Payment_Status',
         'Order_Status',
+        'trackingid',
+        'delivaryservicename',
+        'Delivary_Status',
         'Delivery_At',
         'txn',
     ];

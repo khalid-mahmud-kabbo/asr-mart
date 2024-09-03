@@ -27,6 +27,17 @@ class OrderController extends Controller
             } elseif ($status == 'all') {
                 $data = Order::query();
             }
+
+
+            if ($status == 'Choose Delivary Option') {
+                $data = Order::where('Delivary_Status', DELIVARY_CHOOSE);
+            } elseif ($status == 'Delivary Man') {
+                $data = Order::where('Delivary_Status', DELIVARY_SELFMAN);
+            } elseif ($status == 'Third Part Delivary Service') {
+                $data = Order::where('Delivary_Status', DELIVARY_THIRDPARTY);
+            }
+
+
             $data = $data->orderBy('id', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -34,7 +45,9 @@ class OrderController extends Controller
                     $btn = '<div class="action__buttons">';
                     // $btn = $btn . '<a href="javascript:void(0)" class="btn-action" data-bs-toggle="modal" data-bs-target="#invoiceModal' . $data->id . '" title="' . __('Invoice') . '"><i class="fas fa-file-invoice"></i></a>';
                     $btn = $btn . '<a href="javascript:void(0)" class="btn-action" onclick="orderDetails(' . $data->id . ')" title="' . __('Invoice') . '"><i class="fas fa-file-invoice"></i></a>';
-                    $btn = $btn . '<a href="javascript:void(0)" class="btn-action" onclick="orderStatusEdit(' . $data->id . ')" title="' . __('Change Status') . '"><i class="fas fa-info-circle"></i></a>';
+
+                    $btn = $btn . '<a href="javascript:void(0)" class="btn-action" onclick="orderStatusEdit(' . $data->id . ')" title="' . __('Change Status') . '"><i class="fa-solid fa-pen-to-square"></i></a>';
+
                     $btn = $btn . '<a href="' . route('admin.order_delete', encrypt($data->id)) . '" class="btn-action delete"><i class="fas fa-trash-alt"></i></a>';
                     $btn = $btn . '</div>';
                     return $btn;
@@ -102,7 +115,18 @@ class OrderController extends Controller
                     }
                     return $html;
                 })
-                ->rawColumns(['action', 'Products', 'digital_goods', 'Status', 'types'])
+                ->addColumn('D_status', function ($data) {
+                    $html = '';
+                    if ($data->Delivary_Status == DELIVARY_CHOOSE) {
+                        $html = __('<span class="status bg-primary-light-varient">Choose Delivary Option</span>');
+                    } elseif ($data->Delivary_Status == DELIVARY_SELFMAN) {
+                        $html = __('<span class="status bg-secondary-light-varient">By Self Delivary Man</span>');
+                    } elseif ($data->Delivary_Status == DELIVARY_THIRDPARTY) {
+                        $html = __('<span class="status bg-secondary-light-varient">By Third Party Delivery Service</span>');
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action', 'Products', 'digital_goods', 'Status', 'D_status', 'types'])
                 ->make(true);
         }
         $data['title'] = __('Order List');
@@ -143,6 +167,9 @@ class OrderController extends Controller
         if (!empty($order)) {
             $update = $order->update([
                 'Order_Status' => $request->Order_Status,
+                'Delivary_Status' => $request->Delivary_Status,
+                'delivaryservicename' => $request->delivaryservicename,
+                'trackingid' => $request->trackingid,
             ]);
             if (!empty($update)) {
                 $this->statusChangeEmail($order, $request->Order_Status);

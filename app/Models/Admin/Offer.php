@@ -11,7 +11,8 @@ class Offer extends Model
         'title',
         'offerbanner',
         'enddate',
-        'offerstatus'
+        'offerstatus',
+        'categorylink',
     ];
 
 

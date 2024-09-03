@@ -6,6 +6,8 @@ $offerStartDate = $firstOffer->updated_at;
 @if($firstOffer->offerstatus == 1)
 
 <div class="brands-wrapper flash brands" id="offer-section">
+    <h3 class="mb-4 text-end"><a href="{{ $firstOffer->categorylink }}" style="color: #ee3c22;">See More</a></h3>
+
     <div>
         <div class="row mt-4 justify-content-between">
             <div class="col-lg-2 col-md-4 col-sm-6 date-counter">
@@ -139,6 +141,7 @@ $offerStartDate = $firstOffer->updated_at;
                 </div>
 
             @endforeach
+
         </div>
     </div>
     </div>

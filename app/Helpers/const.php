@@ -14,6 +14,10 @@ const ORDER_RETURN = 6;
 const ORDER_NOT_PAYMENT_YET = 7;
 const ORDER_DELIVERED_FAILED = 8;
 
+const DELIVARY_CHOOSE = 1;
+const DELIVARY_SELFMAN = 2;
+const DELIVARY_THIRDPARTY = 3;
+
 
 #Payment status
 

@@ -29,7 +29,7 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
 <h3 class="product-name new-arrival-product text-center" style="margin-top: 9px; margin-bottom: 16px;"><a class="product-link"
     href="{{ route('single.product', $item->en_Product_Slug) }}">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</a>
 </h3>
-<h4 class="text-black price" style="font-size: large;">{{ currencyConverter($item->Price) }}</h4>
+<h4 class="text-black price" style="font-size: large;">{{ currencyConverter($item->Discount_Price) }}</h4>
 
 <a style="margin-top: 20px !important;" href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded mt-3"
     data-id="{{ $item->id }}">{{ __('Buy Now') }}</a>

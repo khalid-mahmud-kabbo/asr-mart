@@ -10105,7 +10105,7 @@ ul {
     }
     .product-single-area .product-single-left .product-slier-big-image {
         padding-left: 1rem;
-        width: calc(100% - 60px)
+        /* width: calc(100% - 60px) */
     }
     .product-single-area .product-single-left .product-slier-big-image .product-priview-slide .single-slide .slide-image {
         height: 293px

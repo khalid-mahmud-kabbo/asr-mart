@@ -641,3 +641,22 @@ margin-bottom: 2rem;
     }
     /* Home 2 Product */
 }
+
+
+
+
+@media (max-width: 360px) {
+
+
+    .zoom-container {
+        width: 230px !important;
+    }
+
+    .product-single-area .product-single-left .product-thumbnail-image {
+        width: 20%;
+        height: 285px !important;
+        overflow-y: scroll;
+        scrollbar-width: none !important;
+    }
+
+}

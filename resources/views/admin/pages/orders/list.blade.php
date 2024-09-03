@@ -40,6 +40,8 @@
                                 <th>{{ __('Payment Method') }}</th>
                                 <th>{{ __('Digital Goods') }}</th>
                                 <th>{{ __('Status') }}</th>
+                                <th>{{ __('Delivary Option') }}</th>
+                                <th>{{ __('Tracking Id') }}</th>
                                 <th>{{ __('Action') }}</th>
                             </tr>
                         </thead>

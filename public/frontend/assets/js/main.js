@@ -921,24 +921,3 @@ $('.slide-image')
             .children('.slide-image__image').css({'background-image': 'url('+ $(this).attr('data-image') +')'});
         });
 
-
-
-
-
-
-
-        // const hideMessage = ()=>{
-        //     const hidemessage = document.getElementById('hidemessage');
-
-
-
-        // }
-
-
-        // document.getElementById("hidemessage").addEventListener("click", function() {
-        //     document.getElementById("message").classList.add("remove");
-        // });
-
-
-
-

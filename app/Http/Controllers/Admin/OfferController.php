@@ -60,6 +60,7 @@ class OfferController extends Controller
         'title' => $request->title,
         'enddate' => $request->enddate,
         'offerbanner' => $bannerPath,
+        'categorylink' => $request->categorylink,
     ]);
 
     if ($offer) {
@@ -99,6 +100,7 @@ $offer->update([
     'enddate' => $request->enddate,
     'offerbanner' => $offer->offerbanner,
     'offerstatus' => $request->offerstatus,
+    'categorylink' => $request->categorylink,
 ]);
 
 return redirect()->route('admin.offers.index')->with('success', __('Successfully Updated!'));

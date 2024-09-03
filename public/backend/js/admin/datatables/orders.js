@@ -48,6 +48,14 @@
                     name: 'Status'
                 },
                 {
+                    data: 'delivaryservicename',
+                    name: 'delivaryservicename'
+                },
+                {
+                    data: 'trackingid',
+                    name: 'trackingid'
+                },
+                {
                     data: 'action',
                     name: 'action',
                     orderable: false
