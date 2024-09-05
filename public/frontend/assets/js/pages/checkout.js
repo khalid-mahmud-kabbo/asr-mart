@@ -97,7 +97,7 @@
         var options = {
             "key": razorpay_key,
             "amount": (amount * 100), // 2000 paise = INR 20
-            "name": "Zairito",
+            "name": "ASR Mart",
             "description": "Payment",
             "handler": function (response) {
                 $('#razorpay-payment-id').val(response.razorpay_payment_id);

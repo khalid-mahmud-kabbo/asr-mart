@@ -33,7 +33,7 @@ class HomepageTableSeeder extends Seeder
             'Location' => 'about_us',
             'image' => 'about-home.jpg',
             'en_Title' => 'About Us',
-            'en_Description_One' => 'The Story Of Borning <br /> Company Zairito',
+            'en_Description_One' => 'The Story Of Borning <br /> Company ASR Mart',
             'fr_Title' => 'معلومات عنا',
             'fr_Description_One' => "<div>قصة بورنينج</div><div>شركة زايريتو</div>",
         ]);
@@ -57,7 +57,7 @@ class HomepageTableSeeder extends Seeder
         Homepage::create([
             'Location' => 'image_gallery',
             'en_Title' => "image gallery",
-            'en_Description_One' => 'Image Gallery To Zairito For Making Better Online Shopping Experience',
+            'en_Description_One' => 'Image Gallery To ASR Mart For Making Better Online Shopping Experience',
             'fr_Title' => "معرض الصور",
             'fr_Description_One' => "معرض الصور لتقديم تجربة تسوق أفضل عبر الإنترنت",
         ]);

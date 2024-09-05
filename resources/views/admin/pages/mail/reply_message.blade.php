@@ -9,7 +9,7 @@
 
 <body>
     <p>{{ __('Hello User') }}</p>
-    <h2>{{ __('Reply from Zairito') }}</h2>
+    <h2>{{ __('Reply from ASR Mart') }}</h2>
     <p>
         {{ $dt['message'] }}
     </p>

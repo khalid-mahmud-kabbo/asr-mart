@@ -18,7 +18,7 @@ class SendMail extends Mailable
      */
     public function __construct($dt)
     {
-        $this->subject = 'Reply from Zairito';
+        $this->subject = 'Reply from ASR Mart';
         $this->dt = $dt;
     }
 

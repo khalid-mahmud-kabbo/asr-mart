@@ -33,13 +33,29 @@ class SubscribeController extends Controller
         }
     }
 
+    // public function promote(Request $request)
+    // {
+    //     if (is_null($request->message)) {
+    //         return redirect()->back()->with('error', __('Message does not empty!'));
+    //     }
+    //     $dt['message'] = $request->message;
+    //     Mail::to($request->email)->send(new SendMail($dt));
+    //     return redirect()->back()->with('success', __('Message Sent Successfully!'));
+    // }
+
+
     public function promote(Request $request)
-    {
-        if (is_null($request->message)) {
-            return redirect()->back()->with('error', __('Message does not empty!'));
-        }
-        $dt['message'] = $request->message;
-        Mail::to($request->email)->send(new SendMail($dt));
-        return redirect()->back()->with('success', __('Message Sent Successfully!'));
-    }
+{
+    $this->validate($request, [
+        'email' => 'required|email',
+        'message' => 'required',
+    ]);
+
+    $dt['message'] = $request->message;
+
+    Mail::to($request->email)->send(new SendMail($dt));
+
+    return redirect()->back()->with('success', __('Message Sent Successfully!'));
+}
+
 }

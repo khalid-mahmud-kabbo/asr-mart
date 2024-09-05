@@ -5,7 +5,7 @@
                 <div class="header-left">
                     <a class="brand-logo" href="{{ route('front') }}"><img class="brand-image"
                             src="{{ asset(IMG_LOGO_PATH . $allsettings['main_logo']) }}"
-                            alt="{{ __('zairito') }}" /></a>
+                            alt="{{ __('ASR Mart') }}" /></a>
                 </div>
                 <div class="header-right">
                     <a href="{{ route('wishlist') }}" class="wishlist-btn header-btn">
@@ -34,7 +34,7 @@
                             class="fas fa-bars"></i></button>
                 </div>
             </div>
-      
+
   </div>
     </div>
 </div>
