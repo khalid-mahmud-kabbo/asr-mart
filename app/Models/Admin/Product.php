@@ -26,6 +26,7 @@ class Product extends Model
         'Discount',
         'Discountpp',
         'Discount_Price',
+        // 'productsku',
         'Quantity',
         'Sold',
         'Primary_Image',
@@ -72,6 +73,8 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class,'Category_Id');
     }
+
+
     public function brand(){
         return $this->belongsTo(Brand::class,'Brand_Id');
     }

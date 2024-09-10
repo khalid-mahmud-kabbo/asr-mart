@@ -143,19 +143,72 @@
 
 
 
-
+{{--
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                 <label for="select2Multiple">{{ __('Product Color') }}</label>
                                                 <select class="select2-multiple form-control tag_two" name="color[]"
                                                     multiple="multiple">
                                                     @foreach (productColor() as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->Name }}</option>
+                                                        <option value="{{ $item->id }}"><div class="p-2 rounded" style="background-color: {{ $item->ColorCode }}">X</div>{{ $item->Name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('color')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
+                                            </div> --}}
+
+                                            <style>
+                                                .color-box {
+                                                    display: inline-block;
+                                                    width: 20px;
+                                                    height: 20px;
+                                                    margin-right: 8px;
+                                                    border: 1px solid #ddd;
+                                                    border-radius: 3px;
+                                                }
+                                                .select2-container--default .select2-results__option {
+                                                    padding: 5px;
+                                                }
+                                            </style>
+
+
+
+
+                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                <label for="select2Multiple">Product Color</label>
+                                                <select class="select2-multiple form-control tag_two" name="color[]" multiple="multiple">
+                                                    @foreach (productColor() as $item)
+                                                        <option value="{{ $item->id }}" data-color="{{ $item->ColorCode }}">
+                                                            {{ $item->Name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
+
+
+                                            <script>
+                                                $(document).ready(function() {
+                                                    function formatState(state) {
+                                                        if (!state.id) {
+                                                            return state.text;
+                                                        }
+                                                        var color = $(state.element).data('color');
+                                                        var $state = $(
+                                                            '<span class="color-box" style="background-color: ' + color + ';"></span> ' + state.text
+                                                        );
+                                                        return $state;
+                                                    }
+
+                                                    $('.select2-multiple').select2({
+                                                        templateResult: formatState,
+                                                        templateSelection: formatState
+                                                    });
+                                                });
+                                                </script>
+
+
+
+
 
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                 <label for="select2Multiple">{{ __('Product Size') }}</label>
@@ -186,6 +239,40 @@
                                                 @enderror
                                             </div>
 
+
+                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                <label for="productsku">{{ __('Product SKU') }}</label>
+                                                <input type="text" min="0" class="form-control" id="productsku"
+                                                    name="productsku" value="{{ old('productsku') }}" placeholder="Product SKU">
+                                                @error('price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+
+                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                <label for="unit">{{ __('Unit') }}</label>
+
+                                                <select class="js-example-basic-multiple form-control" name="unit">
+                                                    <option value="kg">
+                    kg</option>
+                                                    <option value="pc">
+                    pc</option>
+                                                    <option value="gms">
+                    gms</option>
+                                                    <option value="ltrs">
+                    ltrs</option>
+                                                    <option value="pair">
+                    pair</option>
+                                                    <option value="oz">
+                    oz</option>
+                                                    <option value="lb">
+                    lb</option>
+                                            </select>
+                                                @error('price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                 <label for="discount">{{ __('Discount (in Percentage)') }}</label>
@@ -323,17 +410,7 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" value="1" name="on_sale"
-                                                        class="custom-control-input" id="customSwitch4">
-                                                    <label class="custom-control-label"
-                                                        for="customSwitch4">{{ __('Flash Sale') }}</label>
-                                                </div>
-                                                @error('on_sale')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" value="1" name="on_arrival"

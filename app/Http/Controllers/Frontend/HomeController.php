@@ -24,35 +24,39 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
 
-    public  function index()
-    {
-        if (file_exists(storage_path('installed'))) {
-            if (!Session::has('currency')) {
-                Session::put('currency', Setting::where('slug', 'default_currency')->first()->value ?? 'USD');
-            }
-            $data['sliders'] = Slider::latest()->get();
-            $data['banner'] = Banner::first();
-            $data['offers'] = Offer::get();
-            $data['promotion'] = Advertise::latest()->get();
-            $data['blogs'] = Blog::with('tags')->latest()->get();
-            $data['brands'] = Brand::latest()->get();
-            $data['story'] = CompanyStory::latest()->get();
-            $all_products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->latest();
-            $data['products'] = $all_products->paginate(allsetting('home_products_page'));
-            $data['new_arrivals'] = $all_products->where('New_Arrival', ACTIVE)->paginate(allsetting('home_trending_page'));
-            $data['best_sellings'] = $all_products->where('Best_Selling', ACTIVE)->paginate(allsetting('home_trending_page'));
-            $data['on_sales'] = $all_products->where('On_Sale', ACTIVE)->paginate(allsetting('home_trending_page'));
-            $data['featured_products'] = $all_products->where('Featured_Product', ACTIVE)->paginate(allsetting('home_trending_page'));
-            $data['testimonial'] = Testimonial::get();
-            $seo = SeoSetting::where('slug', 'home')->first();
-            $data['title'] = $seo->title;
-            $data['description'] = $seo->description;
-            $data['keywords'] = $seo->keywords;
-            return view('front.index', $data);
-        } else {
-            return redirect()->to('/install');
+    public function index()
+{
+    if (file_exists(storage_path('installed'))) {
+        if (!Session::has('currency')) {
+            Session::put('currency', Setting::where('slug', 'default_currency')->first()->value ?? 'USD');
         }
+        $data['sliders'] = Slider::latest()->get();
+        $data['banner'] = Banner::first();
+        $data['offers'] = Offer::get();
+        $data['promotion'] = Advertise::latest()->get();
+        $data['blogs'] = Blog::with('tags')->latest()->get();
+        $data['brands'] = Brand::latest()->get();
+        $data['story'] = CompanyStory::latest()->get();
+        $all_products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->latest();
+        $data['products'] = $all_products->paginate(allsetting('home_products_page'));
+        $data['on_sales'] = $all_products->where('On_Sale', ACTIVE)->paginate(allsetting('home_trending_page'));
+        $data['featured_products'] = Product::where('Featured_Product', ACTIVE)->latest()->take(15)->get();
+        $data['new_arrivals'] = Product::where('New_Arrival', ACTIVE)->latest()->take(3)->get();
+        $data['best_sellings'] = Product::where('Best_Selling', ACTIVE)->latest()->take(6)->get();
+        $data['testimonial'] = Testimonial::get();
+        $seo = SeoSetting::where('slug', 'home')->first();
+        $data['title'] = $seo->title;
+        $data['description'] = $seo->description;
+        $data['keywords'] = $seo->keywords;
+        return view('front.index', $data);
+    } else {
+        return redirect()->to('/install');
     }
+}
+
+
+
+
 
 
 

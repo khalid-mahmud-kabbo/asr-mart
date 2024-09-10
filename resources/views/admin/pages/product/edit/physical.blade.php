@@ -124,17 +124,66 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+
+
+
+                                                <style>
+                                                    .color-box {
+                                                        display: inline-block;
+                                                        width: 20px;
+                                                        height: 20px;
+                                                        margin-right: 8px;
+                                                        border: 1px solid #ddd;
+                                                        border-radius: 3px;
+                                                    }
+
+                                                </style>
+
+
+
+
+
+
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <label for="select2Multiple">{{ __('Product Color') }}</label>
                                                     <select class="select2-multiple form-control tag_two" name="color[]"
                                                         multiple="multiple">
                                                         @foreach ($colors as $item)
                                                             <option value="{{ $item->id }}"
-                                                                {{ colorSelected($product->id, $item->id) == 1 ? 'selected' : '' }}>
+                                                                {{ colorSelected($product->id, $item->id) == 1 ? 'selected' : '' }} data-color="{{ $item->ColorCode }}">
                                                                 {{ $item->Name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
+
+
+
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        function formatState(state) {
+                                                            if (!state.id) {
+                                                                return state.text;
+                                                            }
+                                                            var color = $(state.element).data('color');
+                                                            var $state = $(
+                                                                '<span class="color-box" style="background-color: ' + color + ';"></span> ' + state.text
+                                                            );
+                                                            return $state;
+                                                        }
+
+                                                        $('.select2-multiple').select2({
+                                                            templateResult: formatState,
+                                                            templateSelection: formatState
+                                                        });
+                                                    });
+                                                    </script>
+
+
+
+
+
+
+
 
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <label for="select2Multiple">{{ __('Product Size') }}</label>
@@ -160,6 +209,46 @@
                                                     <input type="text" class="form-control" id="price" name="price"
                                                         value="{{ $product->Price }}">
                                                 </div>
+
+
+                                                <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                    <label for="productsku">{{ __('Product SKU') }}</label>
+                                                    <input type="text" class="form-control" id="productsku"
+                                                        name="productsku" >
+
+                                                </div>
+
+
+                                                <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                    <label for="unit">{{ __('Unit') }}</label>
+
+                                                    <select class="js-example-basic-multiple form-control" name="unit">
+                                                        <option value="kg">
+                        kg</option>
+                                                        <option value="pc">
+                        pc</option>
+                                                        <option value="gms">
+                        gms</option>
+                                                        <option value="ltrs">
+                        ltrs</option>
+                                                        <option value="pair">
+                        pair</option>
+                                                        <option value="oz">
+                        oz</option>
+                                                        <option value="lb">
+                        lb</option>
+                                                </select>
+                                                    @error('price')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+
+
+
+
+
+
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <label
                                                         for="exampleInputEmail1">{{ __('Discount (in Percentage)') }}</label>
@@ -230,14 +319,14 @@
 
 
                                                 <div class="row form-vertical__item bg-style">
-                                                    <div class="header-title mb-4"><h5>Section setup</h5></div>
+                                                    <div class="header-title mb-4"><h5>Product Showing Section</h5></div>
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" value="1"
                                                             {{ $product->Status == 1 ? 'checked' : '' }} name="status"
                                                             class="custom-control-input" id="customSwitch1">
                                                         <label class="custom-control-label"
-                                                            for="customSwitch1">{{ __('Status') }}</label>
+                                                            for="customSwitch1">{{ __('Activate Product') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
@@ -246,7 +335,7 @@
                                                             {{ $product->Featured_Product == 1 ? 'checked' : '' }}
                                                             name="feature" class="custom-control-input" id="customSwitch2">
                                                         <label class="custom-control-label"
-                                                            for="customSwitch2">{{ __('Featured Product') }}</label>
+                                                            for="customSwitch2">{{ __('Just For You') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
@@ -258,15 +347,7 @@
                                                             for="customSwitch3 col-md-6 col-lg-4 col-xl-3">{{ __('Best Selling') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="input__group mb-25">
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" value="1"
-                                                            {{ $product->On_Sale == 1 ? 'checked' : '' }} name="on_sale"
-                                                            class="custom-control-input" id="customSwitch4">
-                                                        <label class="custom-control-label"
-                                                            for="customSwitch4">{{ __('On Sale') }}</label>
-                                                    </div>
-                                                </div>
+
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" value="1"

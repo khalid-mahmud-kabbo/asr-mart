@@ -15,10 +15,6 @@
                     name: 'Category_Slug'
                 },
                 {
-                    data: 'Description',
-                    name: 'Description'
-                },
-                {
                     data: 'Category_Icon',
                     name: 'Category_Icon'
                 },

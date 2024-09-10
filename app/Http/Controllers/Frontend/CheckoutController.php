@@ -68,21 +68,18 @@ class CheckoutController extends Controller
                 'billing_name' => 'required',
                 'billing_email' => 'required|email',
                 'billing_street_address' => 'required',
-                'billing_zipcode' => 'required',
                 'billing_country' => 'required',
 
                 'shipping_name' => 'required',
                 'shipping_email' => 'required|email',
                 'shipping_street_address' => 'required',
                 'shipping_state' => 'required',
-                'shipping_zipcode' => 'required',
                 'shipping_country' => 'required',
             ], [
                 'shipping_name.required' => 'The name field is required.',
                 'shipping_email.required' => 'The email field is required.',
                 'shipping_street_address.required' => 'The address field is required.',
                 'shipping_state.required' => 'The state field is required.',
-                'shipping_zipcode.required' => 'The zip code field is required.',
                 'shipping_country.required' => 'The country field is required.',
             ]);
 

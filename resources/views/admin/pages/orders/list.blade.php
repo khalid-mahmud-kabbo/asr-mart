@@ -31,14 +31,14 @@
                         <thead>
                             <tr>
                                 <th>{{ __('SL') }}</th>
-                                <th>{{ __('Id') }}</th>
+                                <th style="width: 50px !important;">{{ __('Id') }}</th>
                                 <th>{{ __('User') }}</th>
                                 <th>{{ __('Products') }}</th>
-                                <th>{{ __('Types') }}</th>
+                                {{-- <th>{{ __('Types') }}</th> --}}
                                 <th>{{ __('Total Amount') }}</th>
-                                <th>{{ __('Coupon Code') }}</th>
+                                {{-- <th>{{ __('Coupon Code') }}</th> --}}
                                 <th>{{ __('Payment Method') }}</th>
-                                <th>{{ __('Digital Goods') }}</th>
+                                {{-- <th>{{ __('Digital Goods') }}</th> --}}
                                 <th>{{ __('Status') }}</th>
                                 <th>{{ __('Delivary Option') }}</th>
                                 <th>{{ __('Tracking Id') }}</th>

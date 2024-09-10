@@ -41,17 +41,17 @@
                                                 <input type="text" id="fr_category_name" name="fr_category_name" value="{{$edit->fr_Category_Name}}" placeholder="Name (Arabic)">
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label>{{ __('Icon Class')}}</label>
-                                                <input type="text" id="icon_class" name="icon_class" value="{{$edit->Category_Icon}}" placeholder="Icon">
+                                                <label>{{ __('Image Link')}}</label>
+                                                <input type="text" id="icon_class" name="icon_class" value="{{$edit->Category_Icon}}" placeholder="Image Link">
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label>{{__('Description '.langString('en'))}}</label>
                                                 <textarea name="en_description" id="en_description" placeholder="Description (English)">{{$edit->en_Description}}</textarea>
                                             </div>
                                             <div class="input__group mb-25">
                                                 <label>{{__('Description '.langString('bn'))}}</label>
                                                 <textarea name="fr_description" id="fr_description" placeholder="Description (Bangla)">{{$edit->fr_Description}}</textarea>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update')}}</button>
                                             </div>

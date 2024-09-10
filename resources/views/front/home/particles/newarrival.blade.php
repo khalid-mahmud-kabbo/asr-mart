@@ -2,54 +2,31 @@
     <div class="arrivals">
         <div class="row g-0">
             @php
-            $secondOffer = $offers->skip(1)->first();
-        @endphp
+            $latestOffer = $offers->where('offerstatus', 1)->sortByDesc('created_at')->first();
+            @endphp
 
-
-@if($secondOffer->offerstatus == 1)
-<div class="col-md-3 deal-of-the-day-wrapper">
-
-                @foreach ($products as $item)
-                @if($item->ItemTag == 2)
-
+            @if($latestOffer)
+            <div class="col-md-3 deal-of-the-day-wrapper">
                 <div class="deal-of-the-day p-4" style="width: 80%; height: 100%;">
-
-                @if($secondOffer)
-                    <h3 class="text-center text-black">{{ $secondOffer->title }}</h3>
-                @endif
-
+                    <h3 class="text-center text-black">{{ $latestOffer->title }}</h3>
 
                     <div class="deal-container bg-white rounded mt-4">
                         <div class="product-card p-3 text-center">
-
+                            @foreach ($products->where('ItemTag', 2)->sortByDesc('created_at') as $item)
                             <a href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}">
-<img src="{{ asset(ProductImage() . $item->Primary_Image) }}"
-alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-radius: .5rem;">
-
-<h3 class="product-name new-arrival-product text-center" style="margin-top: 9px; margin-bottom: 16px;"><a class="product-link"
-    href="{{ route('single.product', $item->en_Product_Slug) }}">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</a>
-</h3>
-<h4 class="text-black price" style="font-size: large;">{{ currencyConverter($item->Discount_Price) }}</h4>
-
-<a style="margin-top: 20px !important;" href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded mt-3"
-    data-id="{{ $item->id }}">{{ __('Buy Now') }}</a>
-
+                                <img src="{{ asset(ProductImage() . $item->Primary_Image) }}" alt="{{ __('product') }}" style="height: 210px; border: 1px solid #ddd; border-radius: .5rem;">
+                                <h3 class="product-name new-arrival-product text-center" style="margin-top: 9px; margin-bottom: 16px;">
+                                    <a class="product-link" href="{{ route('single.product', $item->en_Product_Slug) }}">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</a>
+                                </h3>
+                                <h4 class="text-black price" style="font-size: large;">{{ currencyConverter($item->Discount_Price) }}</h4>
+                                <a style="margin-top: 20px !important;" href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded mt-3" data-id="{{ $item->id }}">{{ __('Buy Now') }}</a>
                             </a>
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
-
-                @endif
-                @endforeach
-
-
-
-
-
-</div>
-
-@endif
+            </div>
+            @endif
 
 <div class="col-md-9">
 
@@ -60,10 +37,10 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
 
 
 
+
+
                 @php
-                $newArrivalProducts = $products->filter(function ($item) {
-                    return $item->New_Arrival == 1;
-                })->take(3);
+                $newArrivalProducts = $new_arrivals
             @endphp
 
 
@@ -98,9 +75,7 @@ alt="{{ __('product') }}" style="height: 210px;border: 1px solid #ddd;border-rad
             <div class="d-flex gap-5 flex-wrap mt-4 justify-content-end">
 
                 @php
-    $BestSellingProducts = $products->filter(function ($item) {
-        return $item->Best_Selling == 1;
-    })->take(6);
+    $BestSellingProducts = $best_sellings
 @endphp
 
                 @foreach ($BestSellingProducts as $item)

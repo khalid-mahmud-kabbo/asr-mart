@@ -23,26 +23,17 @@
                     data: 'Products',
                     name: 'Products'
                 },
-                {
-                    data: 'types',
-                    name: 'types'
-                },
+
                 {
                     data: 'GrandTotal',
                     name: 'GrandTotal'
                 },
-                {
-                    data: 'Coupon',
-                    name: 'Coupon'
-                },
+                
                 {
                     data: 'Payment_Method',
                     name: 'Payment_Method'
                 },
-                {
-                    data: 'digital_goods',
-                    name: 'digital_goods'
-                },
+
                 {
                     data: 'Status',
                     name: 'Status'

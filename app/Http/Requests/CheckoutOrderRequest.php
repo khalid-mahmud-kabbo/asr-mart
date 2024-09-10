@@ -28,13 +28,11 @@ class CheckoutOrderRequest extends FormRequest
             'billing_email' => ['required'],
             'billing_street_address' => ['required'],
             'billing_state' => ['required'],
-            'billing_zipcode' => ['required'],
             'billing_country' => ['required'],
             'shipping_name' => ['required'],
             'shipping_email' => ['required'],
             'shipping_street_address' => ['required'],
             'shipping_state' => ['required'],
-            'shipping_zipcode' => ['required'],
         ];
     }
 }

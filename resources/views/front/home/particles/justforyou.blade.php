@@ -2,11 +2,12 @@
     <div class="brands">
         <h2 class="text-black mb-4">Just For You</h2>
         <div class="row" id="product-container">
+
             @php
-            $JustForYouProducts = $products->filter(function ($item) {
-                return $item->Featured_Product == 1;
-            })->take(15);
+            $JustForYouProducts = $featured_products;
+            $productCount = count($JustForYouProducts);
             @endphp
+
 
             @foreach ($JustForYouProducts as $product)
                 <div class="col-lg-2 col-md-4 col-sm-6 product-item">
@@ -57,8 +58,10 @@
                 </div>
             @endforeach
         </div>
-        <div class="text-center">
-            <a class="loadmore mb-5 mt-3" href="/product/all">Load More Products</a>
-        </div>
+        @if($productCount >= 15)
+            <div class="text-center">
+                <a class="loadmore mb-5 mt-3" href="/product/all">Load More Products</a>
+            </div>
+        @endif
     </div>
 </div>

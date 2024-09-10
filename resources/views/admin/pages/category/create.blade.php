@@ -40,17 +40,17 @@
                                                 <input type="text" id="fr_category_name" name="fr_category_name"  value="{{ old('fr_category_name') }}" placeholder="Name (Bangla)">
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label>{{ __('Icon Class')}}</label>
-                                                <input type="text" id="icon_class" name="icon_class" value="{{ old('icon_class') }}" placeholder="Icon">
+                                                <label>{{ __('Image Link')}}</label>
+                                                <input type="text" id="icon_class" name="icon_class" value="{{ old('icon_class') }}" placeholder="Image Link">
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label>{{__('Description '.langString('en'))}}</label>
                                                 <textarea name="en_description" id="en_description" placeholder="Description (English)">{{ old('en_description') }}</textarea>
                                             </div>
                                             <div class="input__group mb-25">
                                                 <label>{{__('Description '.langString('bn'))}}</label>
                                                 <textarea name="fr_description" id="fr_description" placeholder="Description (Bangla)">{{ old('fr_description') }}</textarea>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Add')}}</button>
                                             </div>
