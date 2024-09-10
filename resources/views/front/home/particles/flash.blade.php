@@ -9,6 +9,83 @@ $offerStartDate = $firstOffer->updated_at;
     <h3 class="mb-4 text-end"><a href="{{ $firstOffer->categorylink }}" style="color: #ee3c22;">See More</a></h3>
 
     <div>
+        <div class="col-lg-2 col-md-4 col-sm-6 date-counter-phone d-none">
+            @if($firstOffer)
+                <h2 class="mb-4" style="color: #ee3c22;">{{ $firstOffer->title }}</h2>
+                <div class="d-flex justify-content-between">
+                <div class="offer-image-home mb-4">
+                    <img src="{{ asset(offerImageBanner() . ImageOfferNew()->offerbanner) }}" class="rounded" alt="{{ $firstOffer->title }}">
+                </div>
+                <div class="countdown-background">
+                    <span id="cz-countdown" class="cz-countdown d-flex justify-content-center align-items-center flash-deal-countdown">
+                        <span class="cz-countdown-days">
+                            <span id="days" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Days</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-hours">
+                            <span id="hours" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Hrs</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-minutes">
+                            <span id="minutes" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Min</span>
+                        </span>
+                        <span class="cz-countdown-value p-1">:</span>
+                        <span class="cz-countdown-seconds">
+                            <span id="seconds" class="cz-countdown-value"></span>
+                            <span class="cz-countdown-text">Sec</span>
+                        </span>
+                    </span>
+                    <div class="progress __progress mt-4">
+                        <div id="flash-deal-progress-bar" class="progress-bar flash-deal-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+                <script>
+                        const offerStartDate = new Date("{{ $offerStartDate }}").getTime();
+                        const offerEndDate = new Date("{{ $firstOffer->enddate }}").getTime();
+                        const countdownFunction = setInterval(() => {
+                        const now = new Date().getTime();
+                        const totalDuration = offerEndDate - offerStartDate;
+                        const timeRemaining = offerEndDate - now;
+                        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                        document.getElementById("days").innerText = days;
+                        document.getElementById("hours").innerText = hours;
+                        document.getElementById("minutes").innerText = minutes;
+                        document.getElementById("seconds").innerText = seconds;
+                        const progressPercentage = ((totalDuration - timeRemaining) / totalDuration) * 100;
+                        const progressBar = document.getElementById("flash-deal-progress-bar");
+                        progressBar.style.width = progressPercentage + "%";
+                        progressBar.setAttribute('aria-valuenow', progressPercentage.toFixed(2));
+                        if (timeRemaining < 0) {
+                            clearInterval(countdownFunction);
+                            document.getElementById("cz-countdown").innerHTML = "EXPIRED";
+                            progressBar.style.width = "100%";
+                            document.getElementById("offer-section").style.display = "none";
+                        }
+                    }, 1000);
+                </script>
+            @endif
+    </div>
+
+
+
+
+
+
+
         <div class="row mt-4 justify-content-between">
             <div class="col-lg-2 col-md-4 col-sm-6 date-counter">
             @if($firstOffer)
