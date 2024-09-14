@@ -252,11 +252,12 @@
                                             <!-- This is server side code. User can not modify it. -->
                                             {!! reviewRating($review->id) !!}
 
-                                            <p class="review-text">{{ $review->feedback }}</p>
 
                                             <span
                                                 class="remiew-time">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
                                         </div>
+
+                                        <p class="review-text">{{ $review->feedback }}</p>a
 
 
 
