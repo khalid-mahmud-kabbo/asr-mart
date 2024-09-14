@@ -257,7 +257,7 @@
                                                 class="remiew-time">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
                                         </div>
 
-                                        <p class="review-text">{{ $review->feedback }}</p>a
+                                        <p class="review-text">{{ $review->feedback }}</p>
 
 
 
