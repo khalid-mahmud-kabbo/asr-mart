@@ -247,12 +247,19 @@
                                                 <h4 class="reviewer-name">{{ $review->user->name }}</h4>
                                             </div>
                                         </div>
+
+
                                         <div class="review-middle">
+
                                             <!-- This is server side code. User can not modify it. -->
                                             {!! reviewRating($review->id) !!}
                                             <span
                                                 class="remiew-time">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
                                         </div>
+
+
+                                        <img class="review-image mb-3" src="{{ asset(ReviewImage() . $review->reviewimg) }}" alt="review-image" style="width: 130px; height: 130px;" />
+
                                         <h4 class="review-meta"><span
                                                 class="time">{{ \Carbon\Carbon::parse($review->created_at)->format('jS M Y') }}
                                             </span> by <a class="author"
