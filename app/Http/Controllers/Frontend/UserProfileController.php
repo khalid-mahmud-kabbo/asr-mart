@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Models\Admin\Order;
 use App\Models\ProductReview;
@@ -101,27 +102,137 @@ class UserProfileController extends Controller
         return view('front.pages.user_profile.track_my_order', $data);
     }
 
+
+
+
+
+
+
+
+
+
     public function reviewStore(ReviewStoreRequest $request)
-    {
-        $prev_review = ProductReview::where('product_id', $request->product_id)->where('user_id', Auth::id())->first();
-        if (!empty($prev_review)) {
-            $update = $prev_review->update([
-                'feedback' => $request->feedback,
-                'rating' => $request->rating,
-            ]);
-            if (!empty($update)) {
-                return redirect()->back()->with('success', 'Your review is successfully updated!');
-            }
-        }
-        $store = ProductReview::create([
+{
+    $prev_review = ProductReview::where('product_id', $request->product_id)
+                    ->where('user_id', Auth::id())
+                    ->first();
+
+    if ($request->hasFile('reviewimg')) {
+        $reviewimagePath = fileUpload($request->file('reviewimg'), ReviewImage());
+    } else {
+        $reviewimagePath = $prev_review ? $prev_review->reviewimg : null;
+    }
+
+    if (!empty($prev_review)) {
+        $update = $prev_review->update([
             'feedback' => $request->feedback,
             'rating' => $request->rating,
-            'product_id' => $request->product_id,
-            'user_id' => Auth::id(),
+            'reviewimg' => $reviewimagePath,
         ]);
-        if (!empty($store)) {
-            return redirect()->back()->with('success', 'Review Successfully');
+
+        if (!empty($update)) {
+            return redirect()->back()->with('success', 'Your review is successfully updated!');
         }
-        return redirect()->back()->with('error', 'Something went wrong!');
     }
+
+    $store = ProductReview::create([
+        'feedback' => $request->feedback,
+        'rating' => $request->rating,
+        'reviewimg' => $reviewimagePath,
+        'product_id' => $request->product_id,
+        'user_id' => Auth::id(),
+    ]);
+
+    if (!empty($store)) {
+        return redirect()->back()->with('success', 'Review Successfully');
+    }
+
+    return redirect()->back()->with('error', 'Something went wrong!');
+}
+
+
+
+
+
+
+
+
+//     public function reviewStore(ReviewStoreRequest $request)
+// {
+//     // Check if the user has already reviewed the product
+//     $prev_review = ProductReview::where('product_id', $request->product_id)
+//                     ->where('user_id', Auth::id())
+//                     ->first();
+
+//     // Use helper to define the upload path
+//     if ($request->hasFile('reviewimg')) {
+//         $reviewimagePath = fileUpload($request->file('reviewimg'), ReviewImage());
+//     } else {
+//         // If no new image is uploaded, retain the old one
+//         $reviewimagePath = $prev_review ? $prev_review->reviewimg : null;
+//     }
+
+//     if (!empty($prev_review)) {
+//         // Update existing review
+//         $update = $prev_review->update([
+//             'feedback' => $request->feedback,
+//             'rating' => $request->rating,
+//             'reviewimg' => $reviewimagePath,
+//         ]);
+
+//         if (!empty($update)) {
+//             return redirect()->back()->with('success', 'Your review is successfully updated!');
+//         }
+//     }
+
+//     // Create a new review if no previous one exists
+//     $store = ProductReview::create([
+//         'feedback' => $request->feedback,
+//         'rating' => $request->rating,
+//         'reviewimg' => $reviewimagePath,
+//         'product_id' => $request->product_id,
+//         'user_id' => Auth::id(),
+//     ]);
+
+//     if (!empty($store)) {
+//         return redirect()->back()->with('success', 'Review Successfully');
+//     }
+
+//     return redirect()->back()->with('error', 'Something went wrong!');
+// }
+
+
+    // public function reviewStore(ReviewStoreRequest $request)
+    // {
+    //     $prev_review = ProductReview::where('product_id', $request->product_id)->where('user_id', Auth::id())->first();
+
+    //     if ($request->hasFile('reviewimg')) {
+    //         $reviewimagePath = fileUpload($request['reviewimg'], ReviewImage());
+    //     } else {
+    //         $reviewimagePath = null;
+    //     }
+
+    //     if (!empty($prev_review)) {
+    //         $update = $prev_review->update([
+    //             'feedback' => $request->feedback,
+    //             'rating' => $request->rating,
+    //             'reviewimg' => $reviewimagePath,
+    //         ]);
+
+    //         if (!empty($update)) {
+    //             return redirect()->back()->with('success', 'Your review is successfully updated!');
+    //         }
+    //     }
+    //     $store = ProductReview::create([
+    //         'feedback' => $request->feedback,
+    //         'rating' => $request->rating,
+    //         'reviewimg' => $reviewimagePath,
+    //         'product_id' => $request->product_id,
+    //         'user_id' => Auth::id(),
+    //     ]);
+    //     if (!empty($store)) {
+    //         return redirect()->back()->with('success', 'Review Successfully');
+    //     }
+    //     return redirect()->back()->with('error', 'Something went wrong!');
+    // }
 }

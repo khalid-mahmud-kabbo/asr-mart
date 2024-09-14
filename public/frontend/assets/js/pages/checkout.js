@@ -9,7 +9,7 @@
                 $('#shipping_email').val($('#billing_email').val());
                 $('#shipping_street_address').val($('#billing_street_address').val());
                 $('#shipping_state').val($('#billing_state').val());
-                $('#shipping_zipcode').val($('#billing_zipcode').val());
+                // $('#shipping_zipcode').val($('#billing_zipcode').val());
                 let state = $('#billing_country option:selected').val();
                 $('#shipping_country').val(state);
 
@@ -18,7 +18,7 @@
                 $('#shipping_email').val("");
                 $('#shipping_street_address').val("");
                 $('#shipping_state').val("");
-                $('#shipping_zipcode').val("");
+                // $('#shipping_zipcode').val("");
                 $('#shipping_country').val("");
             }
         });

@@ -78,7 +78,7 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="billing_zipcode"
                                                 name="billing_zipcode" placeholder="{{ __('Zip/Postal Code') }}"
-                                                value="{{ isset($billing) ? $billing->Zipcode : '' }}" required />
+                                                value="" />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -169,9 +169,9 @@
                                             <input type="text" class="form-control" id="shipping_zipcode"
                                                 name="shipping_zipcode" placeholder="{{ __('Zip/Postal Code') }}"
                                                 value="" />
-                                            @error('shipping_zipcode')
+                                            {{-- @error('shipping_zipcode')
                                                 <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                            @enderror --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

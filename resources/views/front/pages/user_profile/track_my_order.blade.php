@@ -170,7 +170,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="feedback" method="POST" action="{{ route('user.profile.review_store') }}">
+                            <form id="feedback" enctype="multipart/form-data" method="POST" action="{{ route('user.profile.review_store') }}">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $domd->Product_Id }}">
                                 <div class="mb-3  w-100">
@@ -185,6 +185,14 @@
                                         <option value="2">{{ __('Bad (2 Star)') }}</option>
                                         <option value="1">{{ __('Worst (1 Star)') }}</option>
                                     </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label for="reviewimg">Attach Review Image</label>
+                                        <input type="file" class="form-control" id="reviewimg"
+                                            name="reviewimg" />
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">

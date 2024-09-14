@@ -82,7 +82,7 @@ Route::group(['middleware' => ['is_user']], function () {
             Route::post('profile-update', [UserProfileController::class, 'userProfileUpdate'])->name('user.profile.update')->middleware(['isDemo']);
             Route::get('my-order', [UserProfileController::class, 'myOrder'])->name('user.profile.myOrder');
             Route::get('my-review', [UserProfileController::class, 'myReview'])->name('user.profile.myReview');
-            Route::post('review-store', [UserProfileController::class, 'reviewStore'])->name('user.profile.review_store')->middleware(['isDemo']);
+            Route::post('review-store', [UserProfileController::class, 'reviewStore'])->name('user.profile.review_store');
             Route::get('track-my-order/{id}', [UserProfileController::class, 'trackMyOrder'])->name('user.profile.track.my.order');
 
             // wishlist

@@ -177,7 +177,7 @@ class CheckoutController extends Controller
                     $post_data['ship_add2'] = "";
                     $post_data['ship_city'] = $request->shipping_state;
                     $post_data['ship_state'] = $request->shipping_state;
-                    $post_data['ship_postcode'] = $request->shipping_zipcode;
+                    // $post_data['ship_postcode'] = $request->shipping_zipcode;
                     $post_data['ship_phone'] = "";
                     $post_data['ship_country'] = $request->shipping_country;
 
@@ -251,14 +251,14 @@ private function generateOrderNumber()
             'shipping_email' => 'required|email',
             'shipping_street_address' => 'required',
             'shipping_state' => 'required',
-            'shipping_zipcode' => 'required',
+            // 'shipping_zipcode' => 'required',
             'shipping_country' => 'required',
         ], [
             'shipping_name' => 'The name field is required.',
             'shipping_email' => 'The email field is required.',
             'shipping_street_address' => 'The address field is required.',
             'shipping_state' => 'The state field is required.',
-            'shipping_zipcode' => 'The zip code field is required.',
+            // 'shipping_zipcode' => 'The zip code field is required.',
             'shipping_country' => 'The country field is required.',
         ]);
 
@@ -267,7 +267,7 @@ private function generateOrderNumber()
             'email' => $request->billing_email,
             'street' => $request->billing_street_address,
             'state' => $request->billing_state,
-            'zipcode' => $request->billing_zipcode,
+            // 'zipcode' => $request->billing_zipcode,
             'country' => $request->billing_country,
         ];
 
@@ -276,7 +276,7 @@ private function generateOrderNumber()
             'email' => $request->shipping_email,
             'street' => $request->shipping_street_address,
             'state' => $request->shipping_state,
-            'zipcode' => $request->shipping_zipcode,
+            // 'zipcode' => $request->shipping_zipcode,
             'country' => $request->shipping_country
         ];
         Session::put('billing_address', $billing_address);
@@ -352,7 +352,7 @@ private function generateOrderNumber()
             $post_data['ship_add2'] = "";
             $post_data['ship_city'] = $request->shipping_state;
             $post_data['ship_state'] = $request->shipping_state;
-            $post_data['ship_postcode'] = $request->shipping_zipcode;
+            // $post_data['ship_postcode'] = $request->shipping_zipcode;
             $post_data['ship_phone'] = "";
             $post_data['ship_country'] = $request->shipping_country;
 
@@ -575,7 +575,7 @@ private function generateOrderNumber()
             'Email' => $request->shipping_email,
             'Street' => $request->shipping_street_address,
             'State' => $request->shipping_state,
-            'Zipcode' => $request->shipping_zipcode,
+            // 'Zipcode' => $request->shipping_zipcode,
             'Country' => $request->shipping_country
         ]);
     }
@@ -588,7 +588,7 @@ private function generateOrderNumber()
             'Email' => $request->shipping_email,
             'Street' => $request->shipping_street_address,
             'State' => $request->shipping_state,
-            'Zipcode' => $request->shipping_zipcode,
+            // 'Zipcode' => $request->shipping_zipcode,
             'Country' => $request->shipping_country
         ]);
         return $shipping;
