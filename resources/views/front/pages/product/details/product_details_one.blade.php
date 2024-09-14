@@ -251,9 +251,14 @@
 
                                             <!-- This is server side code. User can not modify it. -->
                                             {!! reviewRating($review->id) !!}
+
+                                            <p class="review-text">{{ $review->feedback }}</p>
+
                                             <span
                                                 class="remiew-time">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</span>
                                         </div>
+
+
 
                                         <div class="reviewer">
                                             <div class="reviewer-wrap">
@@ -268,7 +273,7 @@
                                                 class="time">{{ \Carbon\Carbon::parse($review->created_at)->format('jS M Y') }}
                                             </span> by <a class="author"
                                                 href="javascript:void(0)">{{ $review->user->name }}</a></h4>
-                                        <p class="review-text">{{ $review->feedback }}</p>
+
                                     </div>
                                 @empty
                                     <h1>{{ __('No Review Yet!') }}</h1>
