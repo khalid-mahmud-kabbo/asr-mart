@@ -261,7 +261,7 @@
 
 
 
-                                        <div class="reviewer">
+                                        <div class="reviewer mt-3">
                                             <div class="reviewer-wrap">
                                                 <img class="reviewer-image"
                                                     src="{{ isset($review->user->image) ? asset(AdminProfilePicture() . $review->user->image) : Avatar::create($review->user->name)->toBase64() }}"
