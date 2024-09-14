@@ -258,7 +258,7 @@
                                         </div>
 
 
-                                        <img class="review-image mb-3" src="{{ asset(ReviewImage() . $review->reviewimg) }}" alt="review-image" style="width: 130px; height: 130px;" />
+                                        <img class="review-image mb-3" src="{{ asset($review->reviewimg) }}" alt="review-image" style="width: 130px; height: 130px;" />
 
                                         <h4 class="review-meta"><span
                                                 class="time">{{ \Carbon\Carbon::parse($review->created_at)->format('jS M Y') }}
