@@ -1914,3 +1914,31 @@ border-radius: .5rem;
 .review-item.active {
     color: #FCA610;
 }
+
+
+
+
+.up-footer i{
+    font-size: x-large;
+    color: #fff;
+
+}
+
+
+.gapper{
+    margin-right: 1.8rem;
+}
+
+.up-footer .inner-border{
+   border-right: 1px solid rgba(255,255,255,.3);
+}
+
+
+.up-footer span, p{
+    color: #fff;
+}
+
+.up-footer p{
+    font-weight: 400;
+    margin: 0 !important;
+}

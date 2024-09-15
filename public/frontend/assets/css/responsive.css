@@ -706,4 +706,8 @@ margin-bottom: 2rem;
         display: none;
     }
 
+    .gapper {
+        margin-top: 3rem;
+    }
+
 }

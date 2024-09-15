@@ -1,5 +1,70 @@
-<footer class="footer bg-black">
 
+<div class="container-fluid up-footer mb-3" style="background-color: #66499D;">
+    <div class="row justify-content-between p-5">
+
+        <div class="col-md-2 gapper">
+            <div class="inner inner-border d-flex gap-4 align-items-center">
+            <i class="fa fa-truck"></i>
+            <div class="info-cont align-items-center">
+                <span>Fast Delivary</span>
+                <p>All Over Bangladesh</p>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-2 gapper">
+            <div class="inner inner-border d-flex gap-4 align-items-center">
+                <i class="fa-solid fa-money-bill"></i>
+            <div class="info-cont align-items-center">
+                <span>Cash on Delivery</span>
+                <p>All over Bangladesh</p>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-2 gapper">
+            <div class="inner inner-border d-flex gap-4 align-items-center">
+            <i class="fa fa-gift"></i>
+            <div class="info-cont align-items-center">
+                <span>Free Gift Box</span>
+                <p>& gift note</p>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-2 gapper">
+            <div class="inner inner-border d-flex gap-4 align-items-center">
+                <i class="fa-solid fa-phone"></i>
+            <div class="info-cont align-items-center">
+                <span>Contact Us</span>
+                <p>01898592360</p>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-1 gapper">
+            <div class="inner d-flex gap-4 align-items-center">
+            <i class="fa fa-diamond"></i>
+            <div class="info-cont align-items-center">
+                <span>Loyalty</span>
+                <p>Rewarded</p>
+            </div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+
+<footer class="footer bg-black">
     <div class="container pt-5">
 
 
