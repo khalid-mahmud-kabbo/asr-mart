@@ -1,7 +1,7 @@
 <div class="brands-wrapper mt-5">
     <div class="brands">
         <h2 class="text-black mb-4">Just For You</h2>
-        <div class="row" id="product-container">
+        <div class="row justify-content-between" id="product-container">
 
             @php
             $JustForYouProducts = $featured_products;
