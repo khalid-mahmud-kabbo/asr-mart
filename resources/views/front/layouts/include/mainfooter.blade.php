@@ -43,7 +43,7 @@
                 <i class="fa-solid fa-phone"></i>
             <div class="info-cont align-items-center">
                 <span>Contact Us</span>
-                <p>01898592360</p>
+                <p>+8801898-592360</p>
             </div>
             </div>
         </div>
