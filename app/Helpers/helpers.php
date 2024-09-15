@@ -34,70 +34,26 @@ use App\Models\Admin\SpecialOffer;
 use App\Models\Admin\Offer;
 
 
-// if (!function_exists('fileUpload')) {
-//     function fileUpload($img, $path, $user_file_name = null, $width = null, $height = null, $defaultFileName = null)
-//     {
-//         if (!file_exists($path)) {
-//             mkdir($path, 0777, true);
-//         }
-//         if (isset($user_file_name) && $user_file_name != "" && file_exists($path . $user_file_name)) {
-//             unlink($path . $user_file_name);
-//         }
-
-//         // Generate a unique name for the image
-//         $imgName = $defaultFileName ? $defaultFileName . '.' . $img->getClientOriginalExtension() : uniqid() . time() . '.' . $img->getClientOriginalExtension();
-//         $imgPath = public_path($path . $imgName);
-
-//         // Check if the uploaded file is a GIF
-//         if ($img->getClientOriginalExtension() === 'gif') {
-//             // Move the GIF directly without any manipulation
-//             if ($img->move($path, $imgName)) {
-//                 return $imgName;
-//             }
-//         } else {
-//             // For other image types, proceed with processing
-//             $makeImg = Image::make($img)->orientate();
-
-//             if ($width != null && $height != null && is_int($width) && is_int($height)) {
-//                 $makeImg->fit($width, $height);
-//             }
-
-//             if ($makeImg->save($imgPath)) {
-//                 return $imgName;
-//             }
-//         }
-
-//         return false;
-//     }
-// }
-
-
 
 if (!function_exists('fileUpload')) {
     function fileUpload($img, $path, $user_file_name = null, $width = null, $height = null, $defaultFileName = null)
     {
-        // Ensure the directory exists
         if (!file_exists(public_path($path))) {
             mkdir(public_path($path), 0777, true);
         }
 
-        // Remove old file if exists
         if (isset($user_file_name) && $user_file_name != "" && file_exists(public_path($path) . '/' . $user_file_name)) {
             unlink(public_path($path) . '/' . $user_file_name);
         }
 
-        // Generate a unique name for the image
         $imgName = $defaultFileName ? $defaultFileName . '.' . $img->getClientOriginalExtension() : uniqid() . time() . '.' . $img->getClientOriginalExtension();
         $imgPath = public_path($path . '/' . $imgName);
 
-        // Check if the uploaded file is a GIF
         if ($img->getClientOriginalExtension() === 'gif') {
-            // Move the GIF directly without any manipulation
             if ($img->move(public_path($path), $imgName)) {
-                return $path . '/' . $imgName; // Return full path
+                return $imgName;
             }
         } else {
-            // For other image types, proceed with processing
             $makeImg = Image::make($img)->orientate();
 
             if ($width != null && $height != null && is_int($width) && is_int($height)) {
@@ -105,15 +61,13 @@ if (!function_exists('fileUpload')) {
             }
 
             if ($makeImg->save($imgPath)) {
-                return $path . '/' . $imgName; // Return full path
+                return $imgName;
             }
         }
 
         return false;
     }
 }
-
-
 
 
 
@@ -231,18 +185,12 @@ if (!function_exists('offerImageBanner')) {
         return 'uploaded_files/offerimage/';
     }
 }
-
-
 if (!function_exists('ReviewImage')){
     function ReviewImage()
     {
-        return 'uploaded_files/reviewimage';
+        return 'uploaded_files/reviewimage/';
     }
 }
-
-
-
-
 if (!function_exists('GeneralSettingsImage')) {
     function GeneralSettingsImage()
     {

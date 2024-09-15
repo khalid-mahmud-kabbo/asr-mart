@@ -240,12 +240,14 @@
                                 @forelse($products->product_reviews as $review)
                                     <div class="single-review">
 
-                                        <img class="review-image mb-3" src="{{ asset($review->reviewimg) }}" alt="review-image" style="width: 130px; height: 130px;" />
-
-
-
-
-
+                                        <div class="reviewer mt-3">
+                                            <div class="reviewer-wrap">
+                                                <img class="reviewer-image"
+                                                    src="{{ isset($review->user->image) ? asset(AdminProfilePicture() . $review->user->image) : Avatar::create($review->user->name)->toBase64() }}"
+                                                    alt="reviewer-image" />
+                                                <h4 class="reviewer-name">{{ $review->user->name }}</h4>
+                                            </div>
+                                        </div>
 
                                         <div class="review-middle">
 
@@ -260,20 +262,9 @@
                                         <p class="review-text">{{ $review->feedback }}</p>
 
 
+                                        <img class="review-image mt-3 mb-3" src="{{ asset(ReviewImage() . $review->reviewimg) }}" alt="review-image" style="width: 130px; height: 130px;" />
 
-                                        <div class="reviewer mt-3">
-                                            <div class="reviewer-wrap">
-                                                <img class="reviewer-image"
-                                                    src="{{ isset($review->user->image) ? asset(AdminProfilePicture() . $review->user->image) : Avatar::create($review->user->name)->toBase64() }}"
-                                                    alt="reviewer-image" />
-                                                <h4 class="reviewer-name">{{ $review->user->name }}</h4>
-                                            </div>
-                                        </div>
 
-                                        <h4 class="review-meta"><span
-                                                class="time">{{ \Carbon\Carbon::parse($review->created_at)->format('jS M Y') }}
-                                            </span> by <a class="author"
-                                                href="javascript:void(0)">{{ $review->user->name }}</a></h4>
 
                                     </div>
                                 @empty
