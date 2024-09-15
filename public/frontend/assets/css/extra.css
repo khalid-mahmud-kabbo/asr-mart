@@ -1925,6 +1925,12 @@ border-radius: .5rem;
 }
 
 
+.up-footer .container{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+
 .gapper{
     margin-right: 1.8rem;
 }

@@ -1,7 +1,7 @@
 
 <div class="container-fluid up-footer mb-3" style="background-color: #66499D;">
     <div class="container">
-    <div class="row justify-content-between p-5">
+    <div class="row justify-content-between">
 
         <div class="col-md-2 gapper">
             <div class="inner inner-border d-flex gap-4 align-items-center">
