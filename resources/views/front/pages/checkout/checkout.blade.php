@@ -47,7 +47,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="billing_name" name="billing_name"
-                                                placeholder="{{ __('You Name Here') }}"
+                                                placeholder="{{ __('Name') }}"
                                                 value="{{ isset($billing) ? $billing->Name ?? $billing->name : '' }}"
                                                 required />
                                         </div>
@@ -56,7 +56,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                                placeholder="{{ __('You Phone Number') }}"
+                                                placeholder="{{ __('Phone Number') }}"
                                                 value=""
                                                 required />
                                         </div>
