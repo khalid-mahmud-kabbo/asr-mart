@@ -33,6 +33,9 @@
                                 <input type="text" class="form-control rounded-left" placeholder="{{__('Name')}}" name="name" required="">
                             </div>
                             <div class="form-group">
+                                <input type="text" class="form-control rounded-left" placeholder="{{__('Phone Number')}}" name="phone" required="">
+                            </div>
+                            <div class="form-group">
                                 <input type="email" class="form-control rounded-left" placeholder="{{__('Email')}}" name="email" required="">
                             </div>
                             <div class="form-group d-flex">

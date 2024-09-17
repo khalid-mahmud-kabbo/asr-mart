@@ -69,7 +69,7 @@ class CheckoutController extends Controller
                 'billing_email' => 'required|email',
                 'billing_street_address' => 'required',
                 'billing_country' => 'required',
-
+                'phone_number' => 'required',
                 'shipping_name' => 'required',
                 'shipping_email' => 'required|email',
                 'shipping_street_address' => 'required',
@@ -77,6 +77,7 @@ class CheckoutController extends Controller
                 'shipping_country' => 'required',
             ], [
                 'shipping_name.required' => 'The name field is required.',
+                'phone_number.required' => 'The Phone Number Field is required',
                 'shipping_email.required' => 'The email field is required.',
                 'shipping_street_address.required' => 'The address field is required.',
                 'shipping_state.required' => 'The state field is required.',
@@ -104,6 +105,7 @@ class CheckoutController extends Controller
 
                 $billing_address = [
                     'name' => $billing_create->Name,
+                    'phone_number' => $request->phone_number,
                     'email' => $billing_create->Email,
                     'street' => $billing_create->Street,
                     'state' => $billing_create->State,
@@ -114,6 +116,7 @@ class CheckoutController extends Controller
 
                 $shipping_addresss = [
                     'name' => $shipping_create->Name,
+                    'phone_number' => $request->phone_number,
                     'email' => $shipping_create->Email,
                     'street' => $shipping_create->Street,
                     'state' => $shipping_create->State,
@@ -161,6 +164,7 @@ class CheckoutController extends Controller
 
                     # CUSTOMER INFORMATION
                     $post_data['cus_name'] = $request->billing_name;
+                    $post_data['phone_number'] = $request->phone_number;
                     $post_data['cus_email'] = $request->billing_email;
                     $post_data['cus_add1'] = $request->billing_street_address;
                     $post_data['cus_add2'] = "";
@@ -173,6 +177,7 @@ class CheckoutController extends Controller
 
                     # SHIPMENT INFORMATION
                     $post_data['ship_name'] = $request->shipping_name;
+                    $post_data['phone_number'] = $request->phone_number;
                     $post_data['ship_add1'] = $request->shipping_street_address;
                     $post_data['ship_add2'] = "";
                     $post_data['ship_city'] = $request->shipping_state;

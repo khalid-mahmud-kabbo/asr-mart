@@ -48,7 +48,7 @@ class OfferController extends Controller
     $request->validate([
         'title' => 'required|string|max:255',
         'enddate' => 'string|max:255',
-        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
+        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif', // Validate image
     ]);
 
     $bannerPath = null;
@@ -82,7 +82,7 @@ public function update(Request $request)
 {
     $request->validate([
         'title' => 'required|string|max:255',
-        'offerbanner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'offerbanner' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         'enddate' => 'nullable|date',
     ]);
 

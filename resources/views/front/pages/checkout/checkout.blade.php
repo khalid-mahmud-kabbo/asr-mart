@@ -52,6 +52,17 @@
                                                 required />
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                                placeholder="{{ __('You Phone Number') }}"
+                                                value=""
+                                                required />
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="email" class="form-control" id="billing_email"

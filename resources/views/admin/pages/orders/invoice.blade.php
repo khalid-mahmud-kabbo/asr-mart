@@ -21,6 +21,7 @@
                 <p>
                     <b>{{ __('Order Number:') }}</b> <a href="javascript:void(0)">{{ $order->Order_Number }}</a><br>
                     <b>{{ __('Name:') }}</b> {{ $bill['name'] }}<br>
+                    <b>{{ __('Phone Number:') }}</b> {{ $bill['phone_number'] }}<br>
                     <b>{{ __('Email:') }}</b> {{ $bill['email'] }}<br>
                     <b>{{ __('Payment Method: ') }}</b> {{ $order->Payment_Method }}<br>
                     {{-- <b>{{ __('TXN: ') }}</b> {{ $order->txn }} --}}
@@ -33,6 +34,7 @@
                     <b>{{ __('Billing Address:') }}</b><br>
                     <small>
                         {{ $bill['name'] }} <br>
+                        {{ $bill['phone_number'] }} <br>
                         {{ $bill['email'] }} <br>
                         {{ $bill['street'] }} <br>
                         {{ $bill['state'] }} <br>
@@ -49,6 +51,7 @@
                     <b>{{ __('Shipping Address:') }}</b><br>
                     <small>
                         {{ $ship['name'] }} <br>
+                        {{ $ship['phone_number'] }} <br>
                         {{ $ship['email'] }} <br>
                         {{ $ship['street'] }} <br>
                         {{ $ship['state'] }} <br>
