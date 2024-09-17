@@ -505,6 +505,11 @@ margin-bottom: 2rem;
     margin-top: 3rem;
 }
 
+
+.single-grid-product .product-top {
+    height: 121px;
+}
+
 }
 
 @media (max-width: 450px) {
@@ -692,6 +697,11 @@ margin-bottom: 2rem;
     }
 
 
+    .single-grid-product .product-top {
+        height: 121px;
+    }
+
+
     /* Home 2 Product */
 }
 
@@ -719,5 +729,10 @@ margin-bottom: 2rem;
     .gapper {
         margin-top: 3rem;
     }
+
+    .single-grid-product .product-top {
+        height: 121px;
+    }
+
 
 }
