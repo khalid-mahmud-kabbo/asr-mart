@@ -972,7 +972,7 @@ body::-webkit-scrollbar-track {
 
 
 .single-grid-product .product-top .product-thumbnal {
-    height: 171px !important;
+    height: 100% !important;
 }
 
 
@@ -1947,4 +1947,12 @@ border-radius: .5rem;
 .up-footer p{
     font-weight: 400;
     margin: 0 !important;
+}
+
+
+
+
+
+.single-grid-product .product-top {
+    height: 235px;
 }
