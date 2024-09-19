@@ -204,13 +204,25 @@ class CheckoutController extends Controller
                     return  $this->pay($this->grand_total, $this->discount, 'USD', 1, $request->payment_method);
                 } elseif ($request->payment == 'COD') {
                     return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, COD);
-                } elseif ($request->payment == 'bank') {
+                }
+
+                elseif ($request->payment == 'bank') {
                     if ($request->bank_transaction_number != null) {
                         return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, BANK_TRANSFER, $request->bank_transaction_number);
                     } else {
                         return redirect()->back()->with('error', 'Bank Transaction Number is Required.');
                     }
-                } elseif ($request->payment == 'razorpay') {
+                }
+
+                elseif ($request->payment == 'mobilebank') {
+                    if ($request->mobilebank_transaction_number != null) {
+                        return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, MOBILE_BANK, $request->mobilebank_transaction_number);
+                    } else {
+                        return redirect()->back()->with('error', 'Transaction Number is Required.');
+                    }
+                }
+
+                elseif ($request->payment == 'razorpay') {
                     $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
                     $payment = $api->payment->fetch($request->razorpay_payment_id);
                     try {
@@ -379,13 +391,25 @@ private function generateOrderNumber()
             return  $this->pay($this->grand_total, $this->discount, 'USD', 1, $request->payment_method);
         } elseif ($request->payment == 'COD') {
             return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, COD);
-        } elseif ($request->payment == 'bank') {
+        }
+
+        elseif ($request->payment == 'bank') {
             if ($request->bank_transaction_number != null) {
                 return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, BANK_TRANSFER, $request->bank_transaction_number);
             } else {
                 return redirect()->back()->with('error', 'Bank Transaction Number is Required.');
             }
-        } elseif ($request->payment == 'razorpay') {
+        }
+
+        elseif ($request->payment == 'mobilebank') {
+            if ($request->mobilebank_transaction_number != null) {
+                return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, MOBILE_BANK, $request->mobilebank_transaction_number);
+            } else {
+                return redirect()->back()->with('error', 'Transaction Number is Required.');
+            }
+        }
+
+        elseif ($request->payment == 'razorpay') {
             $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
             $payment = $api->payment->fetch($request->razorpay_payment_id);
             try {

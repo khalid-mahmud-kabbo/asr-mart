@@ -33,7 +33,8 @@ const STRIPE = 'STRIPE';
 const SSLCOMMERZ = 'SSLCOMMERZ';
 const PAYPAL = 'PAYPAL';
 const RAZORPAY = 'RAZORPAY';
-const BANK_TRANSFER = 'BANK_TRANSFER';
+const BANK_TRANSFER = 'BANK TRANSFER';
+const MOBILE_BANK = 'MOBILE BANK';
 
 #Files
 const IMG_PATH = 'uploaded_files/';

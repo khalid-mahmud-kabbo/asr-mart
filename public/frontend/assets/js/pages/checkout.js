@@ -30,6 +30,7 @@
                     // $('#stripe-area').html(stripe_template);
                     $('#stripe-area').removeClass('d-none');
                     $('#bank-area').addClass('d-none');
+                    $('#mobilebank-area').addClass('d-none');
                     $('#payButtonN').addClass('d-none');
                     $('#payButton').removeClass('d-none');
                     $('#payment_platform').val(2);
@@ -71,16 +72,25 @@
                 else if ($(this).val() == 'bank') {
                     $('#bank-area').removeClass('d-none');
                     $('#stripe-area').addClass('d-none');
+                    $('#mobilebank-area').addClass('d-none');
+                    $('#payButtonN').addClass('d-none');
+                    $('#payButton').removeClass('d-none');
+                }
+                else if ($(this).val() == 'mobilebank') {
+                    $('#mobilebank-area').removeClass('d-none');
+                    $('#stripe-area').addClass('d-none');
                     $('#payButtonN').addClass('d-none');
                     $('#payButton').removeClass('d-none');
                 }
                 else if ($(this).val() == 'razorpay') {
                     $('#bank-area').addClass('d-none');
+                    $('#mobilebank-area').addClass('d-none');
                     $('#stripe-area').addClass('d-none');
                     $('#payButton').addClass('d-none');
                     $('#payButtonN').removeClass('d-none');
                 } else {
                     $('#bank-area').addClass('d-none');
+                    $('#mobilebank-area').addClass('d-none');
                     $('#stripe-area').addClass('d-none');
                     $('#payButton').removeClass('d-none');
                     $('#payButtonN').addClass('d-none');

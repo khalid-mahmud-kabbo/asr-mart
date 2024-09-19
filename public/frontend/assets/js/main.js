@@ -841,13 +841,14 @@
     checkout payment method active
     ------------------------------*/
     $('input[type="radio"]').on("click", function(){
-      if($(this).attr("value")=="creditcard" || $(this).attr("value")=="bank" || $(this).attr("value")=="bank"){
+      if($(this).attr("value")=="creditcard" || $(this).attr("value")=="bank" || $(this).attr("value")=="mobilebank" || $(this).attr("value")=="bank"){
         $(".card-infor-box").slideDown('slow');
       }
       else {
         $(".card-infor-box").slideUp('slow');
       }
-    });
+    });4
+
 
     /*----------------------------
       footer widget dropdoen Button

@@ -98,8 +98,22 @@
                             <div class="product-info">
                                 <h3 class="product-name">
                                     {{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h3>
-                                <!-- This is server side code. User can not modify it. -->
-                                {!! productReview($products->id) !!}
+
+                                    <div class="d-flex gap-4">
+                                <div class="pricer d-flex gap-3">
+                                    {!! productReview($products->id) !!}
+                                    <div>{{_('(')}} {{ productReviewerNumber($products->id) }} {{_(')')}}</div>
+                                </div>
+|
+                                <div class="pricer d-flex gap-3">
+                                    {{-- Total Order: <span>{{ \App\Models\Admin\Order::count() }}</span> --}}
+                                    Total Order: <span>{{ \App\Models\Admin\OrderDetails::where('Product_Id', $products->id)->count() }}</span>
+                                </div>
+
+                            </div>
+
+
+
 
                                 <div class="product-price">
                                     @if (currencyConverter($products->Price) == currencyConverter($products->Discount_Price))

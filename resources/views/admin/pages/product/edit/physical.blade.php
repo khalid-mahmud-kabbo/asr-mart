@@ -204,6 +204,15 @@
                                                     <input type="text" class="form-control" id="qty" name="qty"
                                                         value="{{ $product->Quantity }}">
                                                 </div>
+
+                                                <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                    <label for="purchesprice">{{ __('Purchase Price') }}</label>
+                                                    <input type="text" class="form-control" id="purchesprice"
+                                                        name="purchesprice" value="{{ $product->Purchesprice}}" >
+
+                                                </div>
+
+
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                     <label for="exampleInputEmail1">{{ __('Price') }}</label>
                                                     <input type="text" class="form-control" id="price" name="price"
@@ -211,12 +220,7 @@
                                                 </div>
 
 
-                                                <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                    <label for="productsku">{{ __('Product SKU') }}</label>
-                                                    <input type="text" class="form-control" id="productsku"
-                                                        name="productsku" >
 
-                                                </div>
 
 
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">

@@ -301,6 +301,11 @@
                                                         <input type="hidden" name="razorpay_payment_id"
                                                             id="razorpay-payment-id">
                                                     @endif
+
+
+
+
+
                                                     @if ($payment->slug == 'bank')
                                                         <div class="form-group">
                                                             <div class="form-check card-check">
@@ -348,6 +353,82 @@
                                                             </div>
                                                         </div>
                                                     @endif
+
+
+
+
+
+
+                                                    @if ($payment->slug == 'mobilebank')
+                                                    <div class="form-group">
+                                                        <div class="form-check card-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="payment" id="mobilebank" value="mobilebank" />
+                                                            <label class="form-check-label" for="mobilebank">
+                                                                {{ $payment->name }}</label>
+                                                            <div class="input-icon">
+                                                                <img src="{{ asset(IMG_PAYMENT_GATEWAY . $payment->image) }}"
+                                                                    alt="payment-method" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-infor-box mb-3 d-none" id="mobilebank-area">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <p class="text-black">Make Send Money On Your Favorite Mobile Banking Number & Give Us Transaction Number</p>
+                                                                    <label class="mt-3" for="bank-trans-num">
+                                                                        {{ __('Transaction Number:') }}
+                                                                    </label>
+                                                                    <input type="text"
+                                                                        name="mobilebank_transaction_number"
+                                                                        id="mobilebank-trans-num" class="form-control"
+                                                                        placeholder="{{ __('Enter Your Transaction Number') }}" />
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="mt-3">
+                                                                        <b>{{ __('Mobile Banking Details:') }}</b>
+                                                                        <br>
+                                                                        {{ __('Bkash Number:') }}
+                                                                        {{ env('BKASH_NUMBER') }}
+                                                                        <br>
+                                                                        {{ __('Nagad Number:') }}
+                                                                        {{ env('NAGAD_NUMBER') }}
+                                                                        <br>
+                                                                        {{ __('Rocket Number:') }}
+                                                                        {{ env('ROCKET_NUMBER') }}
+                                                                        <br>
+                                                                        {{ __('Surecash Number:') }}
+                                                                        {{ env('SURECASH_NUMBER') }}
+                                                                        <br>
+                                                                        {{ __('Upay Number:') }}
+                                                                        {{ env('UPAY_NUMBER') }}
+                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                 @endif
                                             @endforeach
 

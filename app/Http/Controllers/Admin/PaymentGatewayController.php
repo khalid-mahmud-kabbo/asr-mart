@@ -68,6 +68,13 @@ class PaymentGatewayController extends Controller
                     $env_val['BANK_ACCOUNT_HOLDER_NAME'] =  $request->bank_account_holder_name;
                     $env_val['BANK_ACCOUNT_BRANCH'] =  $request->bank_account_branch;
                 }
+                 elseif ($slug == 'mobilebank') {
+                    $env_val['BKASH_NUMBER'] =  $request->bkash_number;
+                    $env_val['NAGAD_NUMBER'] = $request->nagad_number;
+                    $env_val['ROCKET_NUMBER'] = $request->rocket_number;
+                    $env_val['SURECASH_NUMBER'] = $request->surecash_number;
+                    $env_val['UPAY_NUMBER'] =  $request->upay_number;
+                }
                 $update = $this->setEnvValue($env_val);
 
                 if ($update == true) {

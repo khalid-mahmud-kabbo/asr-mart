@@ -230,6 +230,21 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+
+
+                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
+                                                <label for="purchesprice">{{ __('Purchase Price') }}</label>
+                                                <input type="text" min="0" class="form-control" id="purchesprice"
+                                                    name="purchesprice" value="{{ old('purchesprice') }}" placeholder="Purchase Price">
+                                                @error('purchesprice')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+
+
+
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
                                                 <label for="price">{{ __('Price') }}</label>
                                                 <input type="number" min="0" class="form-control" id="price"
@@ -240,14 +255,7 @@
                                             </div>
 
 
-                                            <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                <label for="productsku">{{ __('Product SKU') }}</label>
-                                                <input type="text" min="0" class="form-control" id="productsku"
-                                                    name="productsku" value="{{ old('productsku') }}" placeholder="Product SKU">
-                                                @error('price')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+
 
 
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">

@@ -30,13 +30,21 @@
                         <form class="login-form" method="post" action="{{ route('user.sign.in.post') }}">
                             @csrf
                             <div class="form-group">
+                                <input type="text" class="form-control rounded-left" placeholder="{{ __('Email or Phone') }}"
+                                    name="login" value="{{ env('APP_DEMO') == true ? 'user1@gmail.com' : old('email') }}"
+                                    required="">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            {{-- <div class="form-group">
                                 <input type="email" class="form-control rounded-left" placeholder="{{ __('Email') }}"
                                     name="email" value="{{ env('APP_DEMO') == true ? 'user1@gmail.com' : old('email') }}"
                                     required="">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <input type="password" class="form-control rounded-left" placeholder="{{ __('Password') }}"
                                     name="password" value="{{ env('APP_DEMO') == true ? '123456' : '' }}" required="">

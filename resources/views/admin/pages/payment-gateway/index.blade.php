@@ -179,6 +179,37 @@
                                         value="{{ env('BANK_ACCOUNT_BRANCH') }}">
                                 </div>
                             @endif
+
+                            @if ($pg->slug == 'mobilebank')
+
+                            <div class="input__group mb-25">
+                                <label for="exampleInputEmail1">{{ __('Bkash Number') }}</label>
+                                <input type="text" name="bkash_number" value="{{ env('BKASH_NUMBER') }}">
+                            </div>
+
+                            <div class="input__group mb-25">
+                                <label for="exampleInputEmail1">{{ __('Nagad Number') }}</label>
+                                <input type="text" name="nagad_number" value="{{ env('NAGAD_NUMBER') }}">
+                            </div>
+
+                            <div class="input__group mb-25">
+                                <label for="exampleInputEmail1">{{ __('Rocket Number') }}</label>
+                                <input type="text" name="rocket_number" value="{{ env('ROCKET_NUMBER') }}">
+                            </div>
+
+                            <div class="input__group mb-25">
+                                <label for="exampleInputEmail1">{{ __('Surecash Number') }}</label>
+                                <input type="text" name="surecash_number" value="{{ env('SURECASH_NUMBER') }}">
+                            </div>
+
+                            <div class="input__group mb-25">
+                                <label for="exampleInputEmail1">{{ __('Upay Number') }}</label>
+                                <input type="text" name="upay_number" value="{{ env('UPAY_NUMBER') }}">
+                            </div>
+
+                            @endif
+
+
                             <div class="input__group mb-25">
                                 <label>{{ __('Visibility') }}</label>
                                 <div class="custom-control custom-switch">

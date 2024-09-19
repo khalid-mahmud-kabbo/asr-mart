@@ -33,21 +33,55 @@ class AuthController extends Controller
         $data['keywords'] = $seo->keywords;
         return view('front.auth.sign_in', $data);
     }
+    // public function userSignInPost(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+
+    //     $user = User::where('email', $request->email)->where('is_admin', 0)->first(); //check user
+
+    //     if ($user) {
+    //         if ($user->status == INACTIVE) {
+    //             return  redirect()->route('front')->with('error', __('User is blocked by admin.'));
+    //         }
+    //         if (Hash::check($request->password, $user->password)) {
+    //             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+    //                 if (Auth::user()->is_admin == 0) {
+    //                     return redirect()->route('front');
+    //                 } else {
+    //                     Auth::logout();
+    //                     return redirect()->back()->with('error', __('Something went wrong!'));
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return redirect()->back()->with('error', __('Credential Not Match'));
+    // }
+
+
     public function userSignInPost(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'login' => 'required', // Can be email or phone number
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->where('is_admin', 0)->first(); //check user
+        // Check if the login input is an email or phone number
+        $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
+
+        // Find the user by email or phone, and ensure it's not an admin account
+        $user = User::where($loginType, $request->login)->where('is_admin', 0)->first();
 
         if ($user) {
             if ($user->status == INACTIVE) {
-                return  redirect()->route('front')->with('error', __('User is blocked by admin.'));
+                return redirect()->route('front')->with('error', __('User is blocked by admin.'));
             }
+
             if (Hash::check($request->password, $user->password)) {
-                if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                // Attempt login with the identified login type (email or phone)
+                if (Auth::attempt([$loginType => $request->login, 'password' => $request->password])) {
                     if (Auth::user()->is_admin == 0) {
                         return redirect()->route('front');
                     } else {
@@ -57,8 +91,19 @@ class AuthController extends Controller
                 }
             }
         }
+
         return redirect()->back()->with('error', __('Credential Not Match'));
     }
+
+
+
+
+
+
+
+
+
+
     public function userSignUp()
     {
         $seo = SeoSetting::where('slug', 'sign-up')->first();
