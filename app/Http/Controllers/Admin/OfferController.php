@@ -48,12 +48,12 @@ class OfferController extends Controller
     $request->validate([
         'title' => 'required|string|max:255',
         'enddate' => 'string|max:255',
-        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif', // Validate image
+        'offerbanner' => 'image|mimes:jpeg,png,jpg,gif',
     ]);
 
     $bannerPath = null;
     if ($request->hasFile('offerbanner')) {
-        $bannerPath = $request->file('offerbanner')->store('banners', 'public'); // Save image to 'public/banners'
+        $bannerPath = $request->file('offerbanner')->store('banners', 'public');
     }
 
     $offer = Offer::create([

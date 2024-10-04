@@ -10,14 +10,7 @@
                     data: 'Category_Name',
                     name: 'Category_Name'
                 },
-                {
-                    data: 'Category_Slug',
-                    name: 'Category_Slug'
-                },
-                {
-                    data: 'Category_Icon',
-                    name: 'Category_Icon'
-                },
+               
                 {
                     data: 'Status',
                     name: 'Status'

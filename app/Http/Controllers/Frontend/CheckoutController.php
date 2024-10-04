@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
+use PDF;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutOrderRequest;
 use App\Http\Services\PaymentService;
@@ -10,6 +11,7 @@ use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Admin\Billing;
 use App\Models\Admin\Coupon;
 use App\Models\Admin\Order;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\OrderDetails;
 use App\Models\Admin\Product;
 use App\Models\Admin\Shipping;
@@ -235,7 +237,9 @@ class CheckoutController extends Controller
                     return redirect()->back()->with('error', 'Payment method is required');
                 }
             } catch (\Exception $e) {
-                return redirect()->back()->with('error', 'Something went wrong');
+                Log::error('Checkout error: ' . $e->getMessage());
+        return response()->json(['success' => false, 'message' => 'Something went wrong, please try again.']);
+                // return redirect()->back()->with('error', 'Something went wrong');
             }
         } else {
             return redirect()->back()->with('error', 'Please sign in');
@@ -474,6 +478,20 @@ private function generateOrderNumber()
         return redirect()->back()->with('error', 'Order not accepted');
     }
 
+    // public function orderConfirmMail($order)
+    // {
+    //     $ship = json_decode($order->shipping_address, true);
+    //     $data['userName'] = $ship['name'] ?? null;
+    //     $data['userEmail'] = $ship['email'] ?? null;
+    //     $data['order'] = $order;
+    //     $data['companyName'] = isset(allsetting()['app_title']) && !empty(allsetting()['app_title']) ? allsetting()['app_title'] : __('Company Name');
+    //     $data['subject'] = __('Order Confirm Mail');
+    //     $data['data'] = $order->Order_Number;
+    //     $data['template'] = 'email.order-confirm';
+    //     dispatch(new OrderConfirmMail($data))->onQueue('email-send');
+    // }
+
+
     public function orderConfirmMail($order)
     {
         $ship = json_decode($order->shipping_address, true);
@@ -484,8 +502,46 @@ private function generateOrderNumber()
         $data['subject'] = __('Order Confirm Mail');
         $data['data'] = $order->Order_Number;
         $data['template'] = 'email.order-confirm';
+
+        // Generate PDF for the invoice
+        $pdf = PDF::loadView('invoices.invoice', compact('order', 'ship'));
+        $pdfPath = 'invoices/invoice_' . $order->Order_Number . '.pdf';
+
+        // Store the PDF to storage
+        Storage::put($pdfPath, $pdf->output());
+
+        // Attach the invoice PDF to the email
+        $data['pdfPath'] = $pdfPath; // Store the path for reference in the mail
+
+        // Dispatch the job to send the email with the invoice
         dispatch(new OrderConfirmMail($data))->onQueue('email-send');
     }
+
+
+
+    public function build()
+{
+    $email = $this->view($this->data['template'])
+                  ->subject($this->data['subject'])
+                  ->with($this->data);
+
+    // Attach the invoice PDF
+    if (isset($this->data['pdfPath'])) {
+        $pdfContent = Storage::get($this->data['pdfPath']);
+        $email->attachData($pdfContent, 'invoice_' . $this->data['order']->Order_Number . '.pdf', [
+            'mime' => 'application/pdf',
+        ]);
+    }
+
+    return $email;
+}
+
+
+
+
+
+
+
 
     public function paymentStatus($payment_method)
     {

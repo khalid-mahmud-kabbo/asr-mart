@@ -55,7 +55,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->latest()->paginate(12);
         $data['products'] = $products;
@@ -74,7 +74,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->latest()->paginate(9);
         $data['products'] = $products;
@@ -203,7 +203,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Category_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
@@ -223,7 +223,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Category_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
@@ -242,7 +242,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
@@ -261,7 +261,7 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $data['brands'] = Brand::with('products')->get();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
@@ -282,7 +282,7 @@ class ProductController extends Controller
         $tags = ProductTag::with('product')->latest()->get();
         $colors = Color::with('products')->latest()->get();
         $sizes = Size::with('products')->latest()->get();
-        $category = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $category = Category::with('products')->where('en_Description', null)->orWhere('categoryImage', null)->get();
         $brands = Brand::with('products')->get();
         $products = Product::query();
         $products = $products->with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1);

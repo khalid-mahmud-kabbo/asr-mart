@@ -6,6 +6,9 @@
             @endphp
 
             @if($latestOffer)
+
+
+
             <div class="col-md-3 deal-of-the-day-wrapper">
                 <div class="deal-of-the-day p-4" style="width: 80%; height: 100%;">
                     <h3 class="text-center text-black">{{ $latestOffer->title }}</h3>
@@ -26,6 +29,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             @endif
 
 <div class="col-md-9">
@@ -44,23 +50,48 @@
             @endphp
 
 
-                @foreach ($newArrivalProducts as $item)
 
-                <a href="{{ route('single.product', $item->en_Product_Slug) }}" class="card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important;">
-                    <div class="card-wrapper d-flex gap-2 m-auto">
-                    <div class="p-image p-3">
+@foreach ($newArrivalProducts as $item)
+
+    @if($item->Stock > 0)
+        <!-- In Stock Product -->
+        <a href="{{ route('single.product', $item->en_Product_Slug) }}" class="card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important;">
+            <div class="card-wrapper d-flex gap-2 m-auto">
+                <div class="p-image p-3">
                     <img class="card-img-top" style="height: 100%; overflow:hidden; border-radius: 1rem;" src="{{ asset(ProductImage() . $item->Primary_Image) }}" alt="{{ __('product') }}">
                 </div>
-                    <div class="card-body">
-                      <h3 class="card-title text-black">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</h3>
-                      <div class="product-price mt-3">
+                <div class="card-body">
+                    <h3 class="card-title text-black">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</h3>
+                    <div class="product-price mt-3">
                         <h4 class="price text-black">{{ currencyConverter($item->Discount_Price) }}</h4>
                     </div>
+                </div>
+            </div>
+        </a>
+
+    @else
+        <!-- Out of Stock Product -->
+        <div class="card out-of-stock-card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important; position: relative;">
+            <!-- Stock Out Overlay -->
+            <div class="stock-out-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; border-radius: .5rem;">
+                {{ __('Stock Out') }}
+            </div>
+
+            <div class="card-wrapper d-flex gap-2 m-auto">
+                <div class="p-image p-3">
+                    <img class="card-img-top" style="height: 100%; overflow:hidden; border-radius: 1rem;" src="{{ asset(ProductImage() . $item->Primary_Image) }}" alt="{{ __('product') }}">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title text-black">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</h3>
+                    <div class="product-price mt-3">
+                        <h4 class="price text-black">{{ currencyConverter($item->Discount_Price) }}</h4>
                     </div>
                 </div>
-                </a>
+            </div>
+        </div>
+    @endif
 
-                @endforeach
+@endforeach
 
             </div>
 
@@ -79,6 +110,9 @@
 @endphp
 
                 @foreach ($BestSellingProducts as $item)
+
+
+                @if($item->Stock >0)
 
                 <a href="{{ route('single.product', $item->en_Product_Slug) }}" class="card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important;">
                     <div class="card-wrapper d-flex gap-2 m-auto">
@@ -102,6 +136,33 @@
                     </div>
                 </div>
                 </a>
+
+                @else
+
+                <div class="card out-of-stock-card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important; position: relative;">
+                    <!-- Stock Out Overlay -->
+                    <div class="stock-out-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; border-radius: .5rem;">
+                        {{ __('Stock Out') }}
+                    </div>
+
+                    <div class="card-wrapper d-flex gap-2 m-auto">
+                        <div class="p-image p-3">
+                            <img class="card-img-top" style="height: 100%; overflow:hidden; border-radius: 1rem;" src="{{ asset(ProductImage() . $item->Primary_Image) }}" alt="{{ __('product') }}">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title text-black">{{ langConverter($item->en_Product_Name, $item->fr_Product_Name) }}</h3>
+                            <div class="product-price mt-3">
+                                <h4 class="price text-black">{{ currencyConverter($item->Discount_Price) }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @endif
+
+
+
+
                 @endforeach
 
             </div>

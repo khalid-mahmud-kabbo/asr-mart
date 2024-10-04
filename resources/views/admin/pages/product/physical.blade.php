@@ -223,10 +223,10 @@
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                <label for="qty">{{ __('Quantity') }}</label>
-                                                <input type="text" class="form-control" id="qty" name="qty"
-                                                    value="{{ old('qty') }}" placeholder="Quantity">
-                                                @error('qty')
+                                                <label for="qty">{{ __('Stock') }}</label>
+                                                <input type="text" class="form-control" id="stock" name="stock"
+                                                    value="{{ old('Stock') }}" placeholder="stock">
+                                                @error('stock')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

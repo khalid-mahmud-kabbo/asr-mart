@@ -200,9 +200,9 @@
 
 
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">
-                                                    <label for="exampleInputEmail1">{{ __('Quantity') }}</label>
-                                                    <input type="text" class="form-control" id="qty" name="qty"
-                                                        value="{{ $product->Quantity }}">
+                                                    <label for="exampleInputEmail1">{{ __('Stock') }}</label>
+                                                    <input type="text" class="form-control" id="stock" name="stock"
+                                                        value="{{ $product->Stock }}">
                                                 </div>
 
                                                 <div class="input__group mb-25 col-md-6 col-lg-4 col-xl-3">

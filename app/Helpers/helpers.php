@@ -179,6 +179,13 @@ if (!function_exists('BannerImage')) {
         return 'uploaded_files/banner/';
     }
 }
+if (!function_exists('CategoryImage')) {
+    function CategoryImage()
+    {
+        return 'uploaded_files/category/';
+    }
+}
+
 if (!function_exists('offerImageBanner')) {
     function offerImageBanner()
     {
@@ -212,13 +219,13 @@ if (!function_exists('BlogImage')) {
 if (!function_exists('Category')) {
     function Category()
     {
-        return Category::where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        return Category::where('en_Description', null)->orWhere('categoryImage', null)->get();
     }
 }
 if (!function_exists('Category_Des_Icon')) {
     function Category_Des_Icon()
     {
-        return Category::where('en_Description', '!=', null)->orWhere('Category_Icon', '!=', null)->get();
+        return Category::where('en_Description', '!=', null)->orWhere('categoryImage', '!=', null)->get();
     }
 }
 if (!function_exists('BrandImage')) {

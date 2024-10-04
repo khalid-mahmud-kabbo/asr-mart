@@ -49,8 +49,8 @@ class CategoryController extends Controller
                 ->editColumn('Description', function ($data) {
                     return Str::limit($data->en_Description, 10);
                 })
-                ->editColumn('Category_Icon', function ($data) {
-                    return $data->Category_Icon;
+                ->editColumn('categoryImage', function ($data) {
+                    return $data->categoryImage;
                 })
                 ->rawColumns(['action', 'Category_Name', 'Category_Slug', 'Status', 'Description'])
                 ->make(true);
@@ -65,8 +65,19 @@ class CategoryController extends Controller
         return view('admin.pages.category.create', $data);
     }
 
+
+
     public function categoryStore(CategoryRequest $request)
     {
+        $request->validate([
+            'categoryImage' => 'image|mimes:jpeg,png,jpg,gif,webp,avif',
+        ]);
+
+        $CategoryPath = null;
+        if ($request->hasFile('categoryImage')) {
+            $CategoryPath = fileUpload($request->file('categoryImage'), CategoryImage());
+        }
+
         $category = Category::create([
             'en_Category_Name' => $request->en_category_name,
             'en_Description' => $request->en_description,
@@ -74,24 +85,44 @@ class CategoryController extends Controller
             'fr_Category_Name' => $request->fr_category_name,
             'fr_Description' => $request->fr_description,
             'fr_Category_Slug' => $this->slugify($request->fr_category_name),
-
-            'Category_Icon' => $request->icon_class,
+            'categoryImage' => $CategoryPath,
         ]);
+
         if ($category) {
             return redirect()->route('admin.category')->with('success', __('Successfully Stored !'));
         }
         return redirect()->route('admin.category')->with('error', __('Does not Stored !'));
     }
+
+
+
+
+
     public function categoryEdit($id)
     {
         $data['title'] = __('Category Create');
         $data['edit'] = Category::where('id', $id)->first();
         return view('admin.pages.category.edit', $data);
     }
+
+
     public function categoryUpdate(Request $request)
     {
         $id = $request->id;
         $cat = Category::whereid($id)->first();
+
+        // Validate the request
+        $request->validate([
+            'categoryImage' => 'image|mimes:jpeg,png,jpg,gif,webp,avif',
+        ]);
+
+        // Image handling
+        $CategoryPath = $cat->categoryImage; // Keep existing image
+        if ($request->hasFile('categoryImage')) {
+            $CategoryPath = fileUpload($request->file('categoryImage'), CategoryImage(), $cat->categoryImage); // Replace the image if a new one is uploaded
+        }
+
+        // Update the category data
         $update = $cat->update([
             'en_Category_Name' => is_null($request->en_category_name) ? $cat->en_Category_Name : $request->en_category_name,
             'en_Description' => is_null($request->en_description) ? $cat->en_Description : $request->en_description,
@@ -99,14 +130,20 @@ class CategoryController extends Controller
             'fr_Category_Name' => is_null($request->fr_category_name) ? $cat->fr_Category_Name : $request->fr_category_name,
             'fr_Description' => is_null($request->fr_description) ? $cat->fr_Description : $request->fr_description,
             'fr_Category_Slug' => is_null($request->fr_category_name) ? $cat->fr_Category_Slug : $this->slugify($request->fr_category_name),
-
-            'Category_Icon' => is_null($request->icon_class) ? null : $request->icon_class,
+            'categoryImage' => $CategoryPath, // Save the image path
         ]);
+
         if ($update) {
             return redirect()->route('admin.category')->with('success', __('Successfully Updated!'));
         }
-        return redirect()->back()->with('error', __('Does not Update  !'));
+        return redirect()->back()->with('error', __('Does not Update!'));
     }
+
+
+
+
+
+
     public function categoryActive($id)
     {
         $inactive = Category::find($id)->update(['Status' => 1]);

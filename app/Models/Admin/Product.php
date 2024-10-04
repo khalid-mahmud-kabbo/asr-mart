@@ -28,7 +28,7 @@ class Product extends Model
         'Discountpp',
         'Discount_Price',
         // 'productsku',
-        'Quantity',
+        'Stock',
         'Sold',
         'Primary_Image',
         'Image2',

@@ -9,9 +9,7 @@
                      <a href="{{ route('category.product', $item->id) }}" style="color: #000;">
                     <div class="card__data">
                     <div class="card_img_conteiner">
-                       <img src="{{ $item->Category_Icon }}" class="slider_img" />
-
-                       {{-- <i class="{{ $item->Category_Icon }}"></i> --}}
+                       <img src="{{ asset(CategoryImage() . $item->categoryImage) }}" class="slider_img" />
                        </div>
                        <h4 class="card__description">
                         {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}

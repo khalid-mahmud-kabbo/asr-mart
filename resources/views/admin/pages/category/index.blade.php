@@ -34,8 +34,6 @@
                         <thead>
                         <tr>
                             <th>{{ __('Category Name')}}</th>
-                            <th>{{ __('Category Slug')}}</th>
-                            <th>{{ __('Image Link')}}</th>
                             <th>{{ __('Status')}}</th>
                             <th>{{ __('Action')}}</th>
                         </tr>

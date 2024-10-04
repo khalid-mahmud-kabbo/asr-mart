@@ -7,6 +7,7 @@
                     <div class="success-inner">
                         <h1><i class="fa fa-envelope"></i><span>{{__('Order Successfully Placed')}}</span></h1>
                         <p>{{__('You order is successfully submitted. Your order number is: '.$data)}}</p>
+                        
                         <a href="{{route('front')}}" class="btn btn-primary btn-lg" target="_blank">{{__('Go Home')}}</a>
                     </div>
                 </div>
