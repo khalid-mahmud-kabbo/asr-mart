@@ -3,6 +3,8 @@
         <h2 class="text-black mb-4">Just For You</h2>
         <div class="row justify-content-between" id="product-container">
 
+
+
             @php
             $JustForYouProducts = $featured_products;
             $productCount = count($JustForYouProducts);
@@ -11,7 +13,12 @@
 
             @foreach ($JustForYouProducts as $product)
 
-            @if($product->Stock >0)
+            @php
+                $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $product->id)->count();
+                $isOutOfStock = $totalOrders >= $product->Stock;
+            @endphp
+
+            @if(!$isOutOfStock)
 
                 <div class="col-lg-2 col-md-4 col-sm-6 product-item">
                     <div class="single-grid-product bg-white p-2" style="border: 1px solid #ddd; border-radius:.5rem;">
@@ -52,10 +59,7 @@
                                 {!! productReview($product->id) !!}
                                 <div>{{_('(')}} {{ productReviewerNumber($product->id) }} {{_(')')}}</div>
                             </div>
-                            {{-- <div class="d-flex gap-2">
-                                <a href="{{ route('single.product', $product->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded" data-id="{{ $product->id }}">{{ __('Buy Now') }}</a>
-                                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart addedtocart rounded" data-id="{{ $product->id }}">{{ __('Add To Cart') }}</a>
-                            </div> --}}
+
                         </div>
                     </div>
                 </div>

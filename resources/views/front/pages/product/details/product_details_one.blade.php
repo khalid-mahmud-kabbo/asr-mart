@@ -340,7 +340,12 @@
             @forelse ($similar_product as $product)
 
 
-@if($product->Stock > 0)
+            @php
+            $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $product->id)->count();
+            $isOutOfStock = $totalOrders >= $product->Stock;
+        @endphp
+
+        @if(!$isOutOfStock)
 
 
 

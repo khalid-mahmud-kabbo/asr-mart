@@ -116,7 +116,12 @@
                                 @foreach ($products as $product)
 
 
-@if($product->Stock > 0)
+                                @php
+                                $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $product->id)->count();
+                                $isOutOfStock = $totalOrders >= $product->Stock;
+                            @endphp
+
+                            @if(!$isOutOfStock)
 
 
                                 <div class="col-lg-2 col-md-4 col-sm-6 under-product">

@@ -155,20 +155,20 @@ $offerStartDate = $firstOffer->updated_at;
             @endif
     </div>
 
-
-
             @php
             $FlashSellingProducts = $products->filter(function ($item) {
                 return $item->ItemTag == 1;
             })->take(4);
         @endphp
 
-            @foreach ($FlashSellingProducts as $product)
+        @foreach ($FlashSellingProducts as $product)
 
+            @php
+                $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $product->id)->count();
+                $isOutOfStock = $totalOrders >= $product->Stock;
+            @endphp
 
-            @if($product->Stock >0)
-
-
+            @if(!$isOutOfStock)
 
 
                 <div class="col-lg-2 col-md-4 col-sm-6 product-item-flash">

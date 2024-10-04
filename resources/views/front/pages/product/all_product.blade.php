@@ -114,7 +114,12 @@
                         @foreach ($products as $product)
 
 
-                        @if($product->Stock >0)
+                        @php
+                        $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $product->id)->count();
+                        $isOutOfStock = $totalOrders >= $product->Stock;
+                    @endphp
+
+                    @if(!$isOutOfStock)
 
                             <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 under-product">
                                 <div class="single-grid-product bg-white p-2" style="border: 1px solid #ddd; border-radius:.5rem;">

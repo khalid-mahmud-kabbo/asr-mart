@@ -15,7 +15,12 @@
 
                     <div class="deal-container bg-white rounded mt-4">
                         <div class="product-card p-3 text-center">
+
+
+
                             @foreach ($products->where('ItemTag', 2)->sortByDesc('created_at') as $item)
+
+
                             <a href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}">
                                 <img src="{{ asset(ProductImage() . $item->Primary_Image) }}" alt="{{ __('product') }}" style="height: 210px; border: 1px solid #ddd; border-radius: .5rem;">
                                 <h3 class="product-name new-arrival-product text-center" style="margin-top: 9px; margin-bottom: 16px;">
@@ -25,6 +30,11 @@
                                 <a style="margin-top: 20px !important;" href="{{ route('single.product', $item->en_Product_Slug) }}" title="{{ __('Buy Now') }}" class="add-cart addCart buynow rounded mt-3" data-id="{{ $item->id }}">{{ __('Buy Now') }}</a>
                             </a>
                             @endforeach
+
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -53,8 +63,13 @@
 
 @foreach ($newArrivalProducts as $item)
 
-    @if($item->Stock > 0)
-        <!-- In Stock Product -->
+@php
+$totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $item->id)->count();
+$isOutOfStock = $totalOrders >= $item->Stock;
+@endphp
+
+@if(!$isOutOfStock)
+
         <a href="{{ route('single.product', $item->en_Product_Slug) }}" class="card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important;">
             <div class="card-wrapper d-flex gap-2 m-auto">
                 <div class="p-image p-3">
@@ -112,7 +127,12 @@
                 @foreach ($BestSellingProducts as $item)
 
 
-                @if($item->Stock >0)
+                @php
+                $totalOrders = \App\Models\Admin\OrderDetails::where('product_id', $item->id)->count();
+                $isOutOfStock = $totalOrders >= $item->Stock;
+            @endphp
+
+            @if(!$isOutOfStock)
 
                 <a href="{{ route('single.product', $item->en_Product_Slug) }}" class="card" style="width: 30rem; border-radius: .5rem; height:105px !important; overflow:hidden !important;">
                     <div class="card-wrapper d-flex gap-2 m-auto">
@@ -167,17 +187,6 @@
 
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 
